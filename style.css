@@ -1,0 +1,422 @@
+/*Style for 40daysofruby assignment 1*/
+
+html, body {
+	width:100%;
+	height:100%;
+	height:auto\9; /*scroll fix for IE8 and lower*/
+	margin:0;
+	font-family: 'Exo 2', sans-serif;
+}
+
+/* apply a natural box layout model to all elements */
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+  	font-family: 'Exo 2', sans-serif;
+ }
+
+ a {
+ 	color: #1395b1;
+ 	text-decoration: none;
+ }
+
+ #wrapper {
+ 	height:100%;
+ 	width:100%;
+ }
+
+/*HEADER*/
+.subreddits {
+	background-color:#f0f0f0;
+	border-bottom:1px solid #000;
+	height:36px;
+	margin-top:-10px;
+	overflow:hidden;
+}
+
+.subreddits ul {
+	margin:12px 0;
+	padding:2px;
+}
+
+.subreddits li {
+	list-style-type: none;
+	text-transform: uppercase;
+	display:inline;
+	padding-right:2px;
+
+}
+
+.subreddits a {
+	color:#000;
+	text-decoration: none;
+}
+
+.subreddits a:hover{
+	text-decoration: underline;
+}
+
+.subreddit-nav a{
+	color:#000;
+	text-decoration:none;
+	font-weight: bold;
+	padding-left:5px;
+	float:right;
+}
+
+.top-nav {
+	background-color:#cee3f8;
+	border-bottom:1px solid #5f99cf;
+	height:65px;
+	overflow: hidden
+}
+
+.top-nav img {
+	border:none; /*IE fix*/
+	padding:5px;
+	height:60px;
+	width:auto;
+}
+
+.top-nav h2 {
+	margin:-32px 0 10px 200px;
+}
+
+.top-nav ul {
+	margin:-34px 0 0 350px;
+}
+.top-nav li {
+	display:inline;
+	list-style-type: none;
+	padding:5px;
+	margin-right:5px;
+	background-color: #eff7ff;
+}
+
+.top-nav .active {
+	background-color: #fff;
+	border-top:1px solid #5f99cf;
+	border-left:1px solid #5f99cf;
+	border-right:1px solid #5f99cf;
+	border-bottom:1px solid #fff;
+	overflow: visible;
+}
+.top-nav .active a{
+	color:red;
+}
+.top-nav li a{
+	color:#369;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 20px
+}
+
+.login {
+	float:right;
+	border: 1px solid #333;
+	padding: 8px;
+}
+.login input[type="text"] {
+	margin-left:10px;
+}
+
+.login input[type="submit"]{
+	float:right;
+	margin-top:10px;
+}
+
+.superstrong {
+	font-size:24px;
+	font-weight: bold;
+}
+
+.profile {
+	float:right;
+	background-color: #eff7ff;
+	height:35px;
+	font-size:14px;
+	padding:5px 2px 2px 2px;
+	border-radius:8px 0 0 0;
+	margin:-32px 0 0 0 !important;
+}
+
+.profile img {
+	width:20px;
+	height:auto;
+	border:none; /*IE fix*/
+	padding:0 !important;
+}
+
+.profile a {
+	color:#369;
+	text-decoration: none;
+	font-size:16px !important;
+	font-weight: normal !important;
+}
+
+.profile li{
+	background-color: transparent;
+}
+
+
+/*SIDEBAR*/
+.sidebar {
+	width:25%;
+	height:100%;
+	float:right;
+}
+
+.sidebar input[type=text] {
+	width:95%;
+	height:30px;
+	margin:10px auto;
+	font-size: 14px
+}
+
+.big-button {
+	height:40px;
+	width:90%;
+	background-color:#eff7ff;
+	margin-bottom:10px;
+	border:1px solid #c4dbf1;
+	/*border-right:none;*/
+	border-radius: 0 20px 20px 0;
+}
+
+.big-button a {
+	margin:4px 0 2px 20%;
+	display:block;
+	text-decoration: none;
+	font-size: 18px;
+	font-weight: bold;
+	color:#369;
+}
+
+.big-button-nub {
+	width: 0; 
+	height: 0; 
+	border-top: 20px solid transparent;
+	border-bottom: 20px solid transparent;
+	border-left: 20px solid #369;
+	float:right;
+}
+
+.sidebar .button {
+	background-color:green;
+	color:white;
+	text-decoration: none;
+	padding: 3px;
+	border:1px solid #000;
+	border-radius:5px;
+	margin-right: 5px;
+}
+
+.previous-links {
+	padding:0 8px;
+	border:1px solid #333;
+	width:85%;
+}
+.previous-links ul{
+	margin-left:0;
+	padding-left: 0
+}
+.previous-links li{
+	list-style-type: none;
+	margin-bottom:8px;
+}
+
+.previous-links a{
+	text-decoration: none;
+	color:#369;
+}
+/*MAIN CONTENT*/
+.main-content {
+	width:75%;
+	height:100%;
+	float:left;
+}
+.story {
+	min-height:100px;
+	margin-bottom:0;
+}
+.rank {
+	width:8%;
+	float:left;
+}
+
+.rank p {
+	color:#888;
+	font-size:20px;
+	padding:15px 0 0 15px;
+}
+.rank ul {
+	padding-left: 0;
+	margin:10px 0 0 0;
+}
+.rank li {
+	list-style-type: none;
+	text-align: center
+}
+.info  {
+	width:92%;
+	float:right;
+}
+
+.info ul {
+	padding-left: 0
+}
+.info li {
+	list-style-type: none
+}
+.story-links {
+	padding-left: 0
+}
+.story-links li{
+	list-style-type: none;
+	display: inline;
+	margin-right:4px;
+}
+.post-info a{
+	font-size:16px !important;
+}
+.story-links a{
+	color:#888 !important;
+	font-weight:bold;
+	font-size: 16px !important;
+}
+
+.story-links a:hover {
+	text-decoration: underline !important
+}
+.info .title a {
+	color:blue;
+	text-decoration: none;
+	font-size:25px;
+}
+
+.orange {color:orange;}
+
+.blue{color:blue;}
+
+/* FORM STYLES */
+.register  {
+	margin:15px auto;
+	display:block;
+	width:40%;
+}
+
+.register form input[type="text"], .register form input[type="password"], form label{
+	width:100%;
+	margin-bottom:8px;
+}
+
+.register form input[type="submit"] {
+	margin:0 auto;
+	display:block;
+}
+form input[type="text"], form input[type="password"]{
+	background-color: white;
+	border: 1px solid #cccccc;
+	height:30px;
+	font-size:16px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	border-radius:4px;
+}
+
+.large-button {
+	padding:8px 12px;
+	border-radius:6px;
+	font-size: 17.5px;
+}
+
+/*FOOTER*/
+footer img{
+	margin:10px auto;
+	display:block;
+}
+.footer-info {
+	width:580px;
+	height:200px;
+	margin:0 auto;
+	display:block;
+	border:1px solid #333;
+	border-radius: 5px
+}
+.four-col {
+	width:25%;
+	float:left;
+}
+
+.four-col h4{
+	text-align: center;
+}
+
+.four-col ul {
+	padding-left: 25%;
+
+}
+
+.four-col li {
+	list-style-type: none;
+}
+
+.four-col a{
+	color:#369;
+	text-decoration: none
+}
+
+
+/*MOBILE STYLE*/
+@media screen and (max-width: 1414px){
+	.rank {
+		width:10%;
+		float:left;
+	}
+	.info {
+		width:90%;
+	}
+}
+@media screen and (max-width: 1225px){
+	.profile {
+		margin:-55px 0 0 0 !important;
+	}
+}
+@media screen and (max-width: 1140px){
+	.rank {
+		width:14%;
+		float:left;
+	}
+	.info {
+		width:86%;
+	}
+	.big-button a {
+		margin-left: 2px;
+	}
+}
+@media screen and (max-width:1068px){
+	.button {
+		float:left;
+		width:98%;
+		margin-bottom: 5px
+	}
+	.big-button a {
+		font-size: 15px;
+		margin-top: 8px;
+	}
+}
+@media screen and (max-width: 815px){
+	.rank {
+		float:left;
+		width:84px;
+	}
+	.info {
+		width:84%
+	}
+}
+
+@media screen and (max-width: 715px){
+	.info {
+		width:78%;
+	}
+}
