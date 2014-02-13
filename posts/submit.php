@@ -15,9 +15,8 @@
 		if(isset($_SESSION['userid'])){
 			$user = new get_user_info($_SESSION['userid']);
 			$comments = new comments();
-		} else {
-			$user = "";
-		}
+			$posts = new posts();
+		} 
 	?>
 
 	<!--HEADER-->
@@ -88,25 +87,11 @@
 	<div id="wrapper">
 	<!--MAIN CONTENT-->
 		<div class="main-content">
-			<!--DISPLAY USER COMMENTS-->
 			<?php
-				if(isset($_SESSION['userid'])){
-					$user_comments = $comments->comment_content($_SESSION['userid'], 'userid');
-					
-					if(is_array($user_comments)){
-						foreach($user_comments as $comment){
-							echo '<div class="comment">';
-							echo '<h3>' . $comment['username'] . '</h3>';
-							echo '<p>' . $comment['content'] . '</p>';
-							echo '</div>';
-						}
-					} else {
-						echo $user_comments;
-					}
-				} else {
-					echo "Please login to see more info!";
+				if(isset($_POST['title']) and isset($_POST['content']) and isset($_POST['subreddit'])) {
+					echo $posts->new_post($_POST['title'], $_POST['content'], '', $_SESSION['userid']);
 				}
-			?>
+				?>
 		</div>
 			<!--SIDEBAR-->
 		<div class="sidebar">

@@ -221,7 +221,7 @@ class posts {
 		}
 		$res = $this->make_query($query);
 		if($res != NULL){
-			return $res['content'];
+			return $res[0]['content'];
 		} else {
 			return "sorry something went wrong";
 		}
@@ -408,8 +408,8 @@ class user_session {
 # DELETE OR COMMENT OUT IF NOT IN DEVELOPMENT
 #
 
-$users = new users();
+$posts = new posts();
 
-$users->edit_user(1, 'f9f7c08c33ad2651743fd3731e18c35ace8d3a803dcdb92ea3e6fa60ce837e45', 'password');
+echo var_dump($posts->post_content(13, 'userid'));
 
 ?>

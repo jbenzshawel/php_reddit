@@ -64,7 +64,7 @@
 	<div id="wrapper">
 		<div class="register">
 			<h2>you'll need to register to do that</h2>
-			<form action="../register/validate.php" method="POST">
+			<form action="validate.php" method="POST">
 				<label for="name">Full Name</label>
 				<input type="text" id="name" name="name" />
 

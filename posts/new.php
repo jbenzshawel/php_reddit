@@ -88,25 +88,21 @@
 	<div id="wrapper">
 	<!--MAIN CONTENT-->
 		<div class="main-content">
-			<!--DISPLAY USER COMMENTS-->
-			<?php
-				if(isset($_SESSION['userid'])){
-					$user_comments = $comments->comment_content($_SESSION['userid'], 'userid');
+			<div class="selfpost">
+				<!--NEW POST FORM-->
+				<form action="submit.php" method="POST" >
+					<label for="title"><span class="bigger">Title</span></label>
+					<textarea type="text" id="title" name="title"></textarea>
 					
-					if(is_array($user_comments)){
-						foreach($user_comments as $comment){
-							echo '<div class="comment">';
-							echo '<h3>' . $comment['username'] . '</h3>';
-							echo '<p>' . $comment['content'] . '</p>';
-							echo '</div>';
-						}
-					} else {
-						echo $user_comments;
-					}
-				} else {
-					echo "Please login to see more info!";
-				}
-			?>
+					<label for="content"><span class="bigger">Content</span>(optional)</label>
+					<textarea id="content" name="content" style="height:250px;"></textarea>
+					
+					<label for="subreddit"><span class="bigger">Subreddit</span></label>
+					<input type="text" id="subreddit" name="subreddit" />
+
+					<input class="large-button" type="submit" value="Submit" />
+				</form>
+			</div>
 		</div>
 			<!--SIDEBAR-->
 		<div class="sidebar">
