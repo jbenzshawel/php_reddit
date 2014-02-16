@@ -246,6 +246,23 @@ class posts {
 			return "sorry something went wrong";
 		}
 	}
+
+    // Display all posts in a paticular subreddit
+    // if subreddit = all then all posts displayed
+    // @param$subreddit = string subreddit name
+    public function all_posts($subreddit){
+        if($subreddit == 'all'){
+            $query = 'SELECT * FROM posts';
+        } else {
+            $query = 'SELECT * FROM posts WHERE subreddit = ' . $subreddit;
+        }
+        $res = $this->make_query($query);
+        if($res != NULL){
+            return $res;
+        } else {
+            return "sorry there doesn't seem to be anything here.";
+        }
+    }
 	// IMPORTANT: edit_post method arguments defined as follows: 
 	// $postid = integer, $values = name, $name = name is the table's 
 	// column name and value is the updated value. 
@@ -408,8 +425,5 @@ class user_session {
 # DELETE OR COMMENT OUT IF NOT IN DEVELOPMENT
 #
 
-$posts = new posts();
-
-echo var_dump($posts->post_content(13, 'userid'));
 
 ?>
