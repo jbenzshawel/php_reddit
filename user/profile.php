@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<title>40 Days of Ruby-Assignment 1</title>
+	<title>PHP Reddit</title>
 	<!--Stylesheets-->
 	<link rel='stylesheet' href="../style.css" />
 	<!--Fonts-->
@@ -88,30 +88,31 @@
 		<div class="main-content">
 			<!--DISPLAY USER COMMENTS-->
 			<?php
-
+				// Get comment and post content for this user 
 				$user_comments = $comments->comment_content($profile, 'userid');
 				$user_posts = $posts->post_content($profile, 'userid');
-				if(is_array($user_comments)){
-					foreach($user_comments as $comment){
-						echo '<ul class="comment">';
-						echo '<li><a href="">' . $comment['title'] . '</a> by author</li>'; //$posts->post_content($comment['username'], 'username')</li>';
-						echo '<li><a href="profile.php?user=" >' . $comment['username'] . '</a>' . $comments->age($comment['commentid']) . '</li>';
-						echo '<li><p>' . $comment['content'] . '</p></li>';
-						echo '</ul>';
-					}
-				} 
-				if(is_array($user_posts)){
-					foreach($user_posts as $post){
-						echo '<div class="comment">';
-						echo '<a>' . $post['title'] . '</a>';
-						echo '<p>' . $post['content'] . '</p>';
-						echo '</div>';
-					}
-				} else {
-					echo "<br/>something went wrong retrieving posts..."; 	
-				}
-
-			?>
+				if(is_array($user_comments)):
+					foreach($user_comments as $comment): ?>
+						<ul class="comment">
+							<li><a href="../posts/view.php?postid=<?php echo $comment['postid']; ?>"><?php echo $comment['title']; ?></a> by <?php echo $posts->author($comment['postid']); ?></li>
+							<li><a href="profile.php?user=" ><?php echo $comment['username']; ?></a><?php echo $comments->age($comment['commentid']); ?></li>
+							<li><p><?php echo $comment['content']; ?></p></li>';
+						</ul>
+				<?php	
+					endforeach;
+				endif;  
+				if(is_array($user_posts)):
+					foreach($user_posts as $post): ?>
+						<ul class="comment">
+							<li><a href="../posts/view.php?postid=<?php echo $post['postid']; ?>"><?php echo $post['title']; ?></a>(subreddit)</li>
+							<li><a href="profile.php?user=" ><?php echo $post['username']; ?></a><?php echo $posts->age($post['postid']); ?></li>
+							<li><p><?php echo $post['content']; ?></p></li>';
+						</ul>
+				<?php
+					endforeach;
+				else:      ?>
+					<p>something went wrong retrieving posts...</p>
+				<?php endif; ?>
 		</div>
 			<!--SIDEBAR-->
 		<div class="sidebar">

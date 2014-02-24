@@ -173,12 +173,20 @@ html, body {
 }
 .comment a{
 	margin:10px 20px;
+	color: blue;
 }
 
 .comment p{
 	margin: 5px 20px;
 }
 
+.indi_post {
+	margin-left:20px;
+}
+
+.indi_post a {
+	color: blue;
+}
 /*SIDEBAR*/
 .sidebar {
 	width:25%;

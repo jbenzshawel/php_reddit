@@ -14,9 +14,13 @@
 		$session = new user_session();
 		if(isset($_SESSION['userid'])){
 			$user = new get_user_info($_SESSION['userid']);
-			$comments = new comments();
-			$posts = new posts();
 		} 
+		if(isset($_GET['postid'])){
+			$indi_postid = $_GET['postid'];
+		}
+		$users = new users();
+		$comments = new comments();
+		$posts = new posts();
 	?>
 
 	<!--HEADER-->
@@ -88,39 +92,66 @@
 	<!--MAIN CONTENT-->
 		<div class="main-content">
 			<?php 
-				foreach($posts->all_posts('all') as $post): 
-				$post_author = new get_user_info($post['userid']);
+				if(isset($indi_postid)):
+					$post = $posts->post_content($indi_postid, 'postid');
 			?>
-			<!--STORY 1-->
-			<article class="story">
-				<div class="rank">
-					<p style="float:left;">1</p> 
-					<ul style="float:right;">
-						<li><img src="../images/upvote.PNG" alt="upvote" style="margin-left:1px;"/></li>
-						<li>290</li>
-						<li><img src="../images/downvote.PNG" alt="downvote"/></li>
+				<div class="indi_post">
+					<h3><a href="#"><?php echo $post[0]['title']; ?></a></h3>
+					<span class="sub"><?php echo $posts->age($indi_postid); ?> by <?php echo $post[0]['username']; ?></span>
+					<p><?php echo $post[0]['content']; ?></p>
+				</div>
+				<div class="indi_comments">
+				<?php
+					$comments = $comments->all_comments($indi_postid);
+					if(is_array($comments)):
+						foreach($comments as $comment): ?>
+						<ul class="comment">
+							<li><a href="../user/profile.php?user=<?php echo $comment['userid']; ?>" ><?php echo $users->username($comment['userid']); ?></a><?php //echo $comments->age($comment['commentid']); ?></li>
+							<li><p><?php echo $comment['content']; ?></p></li>
+						</ul>
+				<?php 
+						endforeach;
+					else:
+						echo "<p>$comments</p>";
+					endif;
+				?>
+				</div>
+			<?php	else:
+					foreach($posts->all_posts('all') as $post): 
+					$post_author = new get_user_info($post['userid']);
+			?>
+				<!--STORY 1-->
+				<article class="story">
+					<div class="rank">
+						<p style="float:left;">1</p> 
+						<ul style="float:right;">
+							<li><img src="../images/upvote.PNG" alt="upvote" style="margin-left:1px;"/></li>
+							<li>290</li>
+							<li><img src="../images/downvote.PNG" alt="downvote"/></li>
 
-					</ul>
-				</div>
-				<div class="info">
-					<ul>
-					<li class="title"><a href="#"><?php echo $post['title']; ?></a>(self.all)
-							<ul>
-								<li class="post-info">(<span class="orange">300</span>|<span class="blue">10</span>) <?php echo strtotime($post['date_post']); ?><a href="../user/profile.php?user=<?php echo $post['userid']; ?>"><?php echo $post_author->username(); ?></a>
-									<ul class="story-links">
-										<li><a href="#">10 comments</a></li>
-										<li><a href="#">share</a></li>
-										<li><a href="#">save</a></li>
-										<li><a href="#">hide</a></li>
-										<li><a href="#">report</a></li>
-										<li><a href="#">[l=c]</a></li>
-									</ul>
-								</li>
-							</ul>
-					</ul>
-				</div>
-			</article>
-			<?php endforeach; ?>
+						</ul>
+					</div>
+					<div class="info">
+						<ul>
+						<li class="title"><a href="view.php?postid=<?php echo $post['postid']; ?>"><?php echo $post['title']; ?></a>(self.all)
+								<ul>
+									<li class="post-info">(<span class="orange">300</span>|<span class="blue">10</span>) <?php echo $posts->age($post['postid']) . " "; ?><a href="../user/profile.php?user=<?php echo $post['userid']; ?>"><?php echo $post_author->username(); ?></a>
+										<ul class="story-links">
+											<li><a href="#">10 comments</a></li>
+											<li><a href="#">share</a></li>
+											<li><a href="#">save</a></li>
+											<li><a href="#">hide</a></li>
+											<li><a href="#">report</a></li>
+											<li><a href="#">[l=c]</a></li>
+										</ul>
+									</li>
+								</ul>
+						</ul>
+					</div>
+				</article>
+				<?php endforeach; 
+					  endif;
+				?>
 		</div>
 			<!--SIDEBAR-->
 		<div class="sidebar">
