@@ -26,20 +26,21 @@
       <file leaf-file-name="utilities.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/utilities.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="513" column="52" selection-start="18939" selection-end="18939" vertical-scroll-proportion="0.7382953" vertical-offset="9645" max-vertical-offset="13040">
+            <state line="171" column="5" selection-start="6055" selection-end="6055" vertical-scroll-proportion="4.1056423" vertical-offset="0" max-vertical-offset="13740">
               <folding>
                 <element signature="e#6#137#0" expanded="true" />
-                <marker date="1393634844296" expanded="true" signature="2579:2650" placeholder="INSERT INTO ..." />
-                <marker date="1393634844296" expanded="true" signature="5265:5314" placeholder="SELECT `user..." />
-                <marker date="1393634844296" expanded="true" signature="8475:8542" placeholder="INSERT INTO ..." />
-                <marker date="1393634844296" expanded="true" signature="10248:10321" placeholder="SELECT * FRO..." />
-                <marker date="1393634844296" expanded="true" signature="10858:10931" placeholder="SELECT * FRO..." />
-                <marker date="1393634844296" expanded="true" signature="12361:12380" placeholder="SELECT * FRO..posts..." />
-                <marker date="1393634844296" expanded="true" signature="14656:14719" placeholder="INSERT INTO ..." />
-                <marker date="1393634844296" expanded="true" signature="15724:15835" placeholder="SELECT * FRO..." />
-                <marker date="1393634844296" expanded="true" signature="16407:16486" placeholder="SELECT * FRO..." />
-                <marker date="1393634844296" expanded="true" signature="17079:17199" placeholder="SELECT usern..comments..." />
-                <marker date="1393634844296" expanded="true" signature="22129:22176" placeholder="SELECT $sele..$table WHERE..." />
+                <marker date="1393635149609" expanded="true" signature="2579:2650" placeholder="INSERT INTO ..." />
+                <marker date="1393635149609" expanded="true" signature="5265:5314" placeholder="SELECT `user..." />
+                <marker date="1393635149609" expanded="true" signature="8009:8056" placeholder="SELECT $sele..$table WHERE..." />
+                <marker date="1393635149609" expanded="true" signature="10436:10503" placeholder="INSERT INTO ..." />
+                <marker date="1393635149609" expanded="true" signature="12209:12282" placeholder="SELECT * FRO..." />
+                <marker date="1393635149609" expanded="true" signature="12819:12892" placeholder="SELECT * FRO..." />
+                <marker date="1393635149609" expanded="true" signature="14322:14341" placeholder="SELECT * FRO..posts..." />
+                <marker date="1393635149609" expanded="true" signature="16617:16680" placeholder="INSERT INTO ..." />
+                <marker date="1393635149609" expanded="true" signature="17685:17796" placeholder="SELECT * FRO..." />
+                <marker date="1393635149609" expanded="true" signature="18368:18447" placeholder="SELECT * FRO..." />
+                <marker date="1393635149609" expanded="true" signature="19040:19160" placeholder="SELECT usern..comments..." />
+                <marker date="1393635149609" expanded="true" signature="24090:24137" placeholder="SELECT $sele..$table WHERE..." />
               </folding>
             </state>
           </provider>
@@ -249,17 +250,18 @@
         <state line="580" column="0" selection-start="20791" selection-end="20791" vertical-scroll-proportion="0.0" vertical-offset="9214" max-vertical-offset="9979">
           <folding>
             <element signature="e#6#137#0" expanded="true" />
-            <marker date="1393634844296" expanded="true" signature="2579:2650" placeholder="INSERT INTO ..." />
-            <marker date="1393634844296" expanded="true" signature="5265:5314" placeholder="SELECT `user..." />
-            <marker date="1393634844296" expanded="true" signature="8475:8542" placeholder="INSERT INTO ..." />
-            <marker date="1393634844296" expanded="true" signature="10248:10321" placeholder="SELECT * FRO..." />
-            <marker date="1393634844296" expanded="true" signature="10858:10931" placeholder="SELECT * FRO..." />
-            <marker date="1393634844296" expanded="true" signature="12361:12380" placeholder="SELECT * FRO..posts..." />
-            <marker date="1393634844296" expanded="true" signature="14656:14719" placeholder="INSERT INTO ..." />
-            <marker date="1393634844296" expanded="true" signature="15724:15835" placeholder="SELECT * FRO..." />
-            <marker date="1393634844296" expanded="true" signature="16407:16486" placeholder="SELECT * FRO..." />
-            <marker date="1393634844296" expanded="true" signature="17079:17199" placeholder="SELECT usern..comments..." />
-            <marker date="1393634844296" expanded="true" signature="22129:22176" placeholder="SELECT $sele..$table WHERE..." />
+            <marker date="1393635149609" expanded="true" signature="2579:2650" placeholder="INSERT INTO ..." />
+            <marker date="1393635149609" expanded="true" signature="5265:5314" placeholder="SELECT `user..." />
+            <marker date="1393635149609" expanded="true" signature="8009:8056" placeholder="SELECT $sele..$table WHERE..." />
+            <marker date="1393635149609" expanded="true" signature="10436:10503" placeholder="INSERT INTO ..." />
+            <marker date="1393635149609" expanded="true" signature="12209:12282" placeholder="SELECT * FRO..." />
+            <marker date="1393635149609" expanded="true" signature="12819:12892" placeholder="SELECT * FRO..." />
+            <marker date="1393635149609" expanded="true" signature="14322:14341" placeholder="SELECT * FRO..posts..." />
+            <marker date="1393635149609" expanded="true" signature="16617:16680" placeholder="INSERT INTO ..." />
+            <marker date="1393635149609" expanded="true" signature="17685:17796" placeholder="SELECT * FRO..." />
+            <marker date="1393635149609" expanded="true" signature="18368:18447" placeholder="SELECT * FRO..." />
+            <marker date="1393635149609" expanded="true" signature="19040:19160" placeholder="SELECT usern..comments..." />
+            <marker date="1393635149609" expanded="true" signature="24090:24137" placeholder="SELECT $sele..$table WHERE..." />
           </folding>
         </state>
       </provider>
@@ -269,17 +271,18 @@
         <state line="531" column="12" selection-start="19510" selection-end="19684" vertical-scroll-proportion="0.0" vertical-offset="8687" max-vertical-offset="10081">
           <folding>
             <element signature="e#6#137#0" expanded="true" />
-            <marker date="1393634844296" expanded="true" signature="2579:2650" placeholder="INSERT INTO ..." />
-            <marker date="1393634844296" expanded="true" signature="5265:5314" placeholder="SELECT `user..." />
-            <marker date="1393634844296" expanded="true" signature="8475:8542" placeholder="INSERT INTO ..." />
-            <marker date="1393634844296" expanded="true" signature="10248:10321" placeholder="SELECT * FRO..." />
-            <marker date="1393634844296" expanded="true" signature="10858:10931" placeholder="SELECT * FRO..." />
-            <marker date="1393634844296" expanded="true" signature="12361:12380" placeholder="SELECT * FRO..posts..." />
-            <marker date="1393634844296" expanded="true" signature="14656:14719" placeholder="INSERT INTO ..." />
-            <marker date="1393634844296" expanded="true" signature="15724:15835" placeholder="SELECT * FRO..." />
-            <marker date="1393634844296" expanded="true" signature="16407:16486" placeholder="SELECT * FRO..." />
-            <marker date="1393634844296" expanded="true" signature="17079:17199" placeholder="SELECT usern..comments..." />
-            <marker date="1393634844296" expanded="true" signature="22129:22176" placeholder="SELECT $sele..$table WHERE..." />
+            <marker date="1393635149609" expanded="true" signature="2579:2650" placeholder="INSERT INTO ..." />
+            <marker date="1393635149609" expanded="true" signature="5265:5314" placeholder="SELECT `user..." />
+            <marker date="1393635149609" expanded="true" signature="8009:8056" placeholder="SELECT $sele..$table WHERE..." />
+            <marker date="1393635149609" expanded="true" signature="10436:10503" placeholder="INSERT INTO ..." />
+            <marker date="1393635149609" expanded="true" signature="12209:12282" placeholder="SELECT * FRO..." />
+            <marker date="1393635149609" expanded="true" signature="12819:12892" placeholder="SELECT * FRO..." />
+            <marker date="1393635149609" expanded="true" signature="14322:14341" placeholder="SELECT * FRO..posts..." />
+            <marker date="1393635149609" expanded="true" signature="16617:16680" placeholder="INSERT INTO ..." />
+            <marker date="1393635149609" expanded="true" signature="17685:17796" placeholder="SELECT * FRO..." />
+            <marker date="1393635149609" expanded="true" signature="18368:18447" placeholder="SELECT * FRO..." />
+            <marker date="1393635149609" expanded="true" signature="19040:19160" placeholder="SELECT usern..comments..." />
+            <marker date="1393635149609" expanded="true" signature="24090:24137" placeholder="SELECT $sele..$table WHERE..." />
           </folding>
         </state>
       </provider>
@@ -289,17 +292,18 @@
         <state line="496" column="0" selection-start="17762" selection-end="17762" vertical-scroll-proportion="0.0" vertical-offset="7837" max-vertical-offset="9265">
           <folding>
             <element signature="e#6#137#0" expanded="true" />
-            <marker date="1393634844296" expanded="true" signature="2579:2650" placeholder="INSERT INTO ..." />
-            <marker date="1393634844296" expanded="true" signature="5265:5314" placeholder="SELECT `user..." />
-            <marker date="1393634844296" expanded="true" signature="8475:8542" placeholder="INSERT INTO ..." />
-            <marker date="1393634844296" expanded="true" signature="10248:10321" placeholder="SELECT * FRO..." />
-            <marker date="1393634844296" expanded="true" signature="10858:10931" placeholder="SELECT * FRO..." />
-            <marker date="1393634844296" expanded="true" signature="12361:12380" placeholder="SELECT * FRO..posts..." />
-            <marker date="1393634844296" expanded="true" signature="14656:14719" placeholder="INSERT INTO ..." />
-            <marker date="1393634844296" expanded="true" signature="15724:15835" placeholder="SELECT * FRO..." />
-            <marker date="1393634844296" expanded="true" signature="16407:16486" placeholder="SELECT * FRO..." />
-            <marker date="1393634844296" expanded="true" signature="17079:17199" placeholder="SELECT usern..comments..." />
-            <marker date="1393634844296" expanded="true" signature="22129:22176" placeholder="SELECT $sele..$table WHERE..." />
+            <marker date="1393635149609" expanded="true" signature="2579:2650" placeholder="INSERT INTO ..." />
+            <marker date="1393635149609" expanded="true" signature="5265:5314" placeholder="SELECT `user..." />
+            <marker date="1393635149609" expanded="true" signature="8009:8056" placeholder="SELECT $sele..$table WHERE..." />
+            <marker date="1393635149609" expanded="true" signature="10436:10503" placeholder="INSERT INTO ..." />
+            <marker date="1393635149609" expanded="true" signature="12209:12282" placeholder="SELECT * FRO..." />
+            <marker date="1393635149609" expanded="true" signature="12819:12892" placeholder="SELECT * FRO..." />
+            <marker date="1393635149609" expanded="true" signature="14322:14341" placeholder="SELECT * FRO..posts..." />
+            <marker date="1393635149609" expanded="true" signature="16617:16680" placeholder="INSERT INTO ..." />
+            <marker date="1393635149609" expanded="true" signature="17685:17796" placeholder="SELECT * FRO..." />
+            <marker date="1393635149609" expanded="true" signature="18368:18447" placeholder="SELECT * FRO..." />
+            <marker date="1393635149609" expanded="true" signature="19040:19160" placeholder="SELECT usern..comments..." />
+            <marker date="1393635149609" expanded="true" signature="24090:24137" placeholder="SELECT $sele..$table WHERE..." />
           </folding>
         </state>
       </provider>
@@ -309,17 +313,18 @@
         <state line="523" column="0" selection-start="18286" selection-end="18286" vertical-scroll-proportion="0.0" vertical-offset="8891" max-vertical-offset="9044">
           <folding>
             <element signature="e#6#137#0" expanded="true" />
-            <marker date="1393634844296" expanded="true" signature="2579:2650" placeholder="INSERT INTO ..." />
-            <marker date="1393634844296" expanded="true" signature="5265:5314" placeholder="SELECT `user..." />
-            <marker date="1393634844296" expanded="true" signature="8475:8542" placeholder="INSERT INTO ..." />
-            <marker date="1393634844296" expanded="true" signature="10248:10321" placeholder="SELECT * FRO..." />
-            <marker date="1393634844296" expanded="true" signature="10858:10931" placeholder="SELECT * FRO..." />
-            <marker date="1393634844296" expanded="true" signature="12361:12380" placeholder="SELECT * FRO..posts..." />
-            <marker date="1393634844296" expanded="true" signature="14656:14719" placeholder="INSERT INTO ..." />
-            <marker date="1393634844296" expanded="true" signature="15724:15835" placeholder="SELECT * FRO..." />
-            <marker date="1393634844296" expanded="true" signature="16407:16486" placeholder="SELECT * FRO..." />
-            <marker date="1393634844296" expanded="true" signature="17079:17199" placeholder="SELECT usern..comments..." />
-            <marker date="1393634844296" expanded="true" signature="22129:22176" placeholder="SELECT $sele..$table WHERE..." />
+            <marker date="1393635149609" expanded="true" signature="2579:2650" placeholder="INSERT INTO ..." />
+            <marker date="1393635149609" expanded="true" signature="5265:5314" placeholder="SELECT `user..." />
+            <marker date="1393635149609" expanded="true" signature="8009:8056" placeholder="SELECT $sele..$table WHERE..." />
+            <marker date="1393635149609" expanded="true" signature="10436:10503" placeholder="INSERT INTO ..." />
+            <marker date="1393635149609" expanded="true" signature="12209:12282" placeholder="SELECT * FRO..." />
+            <marker date="1393635149609" expanded="true" signature="12819:12892" placeholder="SELECT * FRO..." />
+            <marker date="1393635149609" expanded="true" signature="14322:14341" placeholder="SELECT * FRO..posts..." />
+            <marker date="1393635149609" expanded="true" signature="16617:16680" placeholder="INSERT INTO ..." />
+            <marker date="1393635149609" expanded="true" signature="17685:17796" placeholder="SELECT * FRO..." />
+            <marker date="1393635149609" expanded="true" signature="18368:18447" placeholder="SELECT * FRO..." />
+            <marker date="1393635149609" expanded="true" signature="19040:19160" placeholder="SELECT usern..comments..." />
+            <marker date="1393635149609" expanded="true" signature="24090:24137" placeholder="SELECT $sele..$table WHERE..." />
           </folding>
         </state>
       </provider>
@@ -329,17 +334,18 @@
         <state line="479" column="0" selection-start="16457" selection-end="16457" vertical-scroll-proportion="0.0" vertical-offset="7497" max-vertical-offset="8262">
           <folding>
             <element signature="e#6#137#0" expanded="true" />
-            <marker date="1393634844296" expanded="true" signature="2579:2650" placeholder="INSERT INTO ..." />
-            <marker date="1393634844296" expanded="true" signature="5265:5314" placeholder="SELECT `user..." />
-            <marker date="1393634844296" expanded="true" signature="8475:8542" placeholder="INSERT INTO ..." />
-            <marker date="1393634844296" expanded="true" signature="10248:10321" placeholder="SELECT * FRO..." />
-            <marker date="1393634844296" expanded="true" signature="10858:10931" placeholder="SELECT * FRO..." />
-            <marker date="1393634844296" expanded="true" signature="12361:12380" placeholder="SELECT * FRO..posts..." />
-            <marker date="1393634844296" expanded="true" signature="14656:14719" placeholder="INSERT INTO ..." />
-            <marker date="1393634844296" expanded="true" signature="15724:15835" placeholder="SELECT * FRO..." />
-            <marker date="1393634844296" expanded="true" signature="16407:16486" placeholder="SELECT * FRO..." />
-            <marker date="1393634844296" expanded="true" signature="17079:17199" placeholder="SELECT usern..comments..." />
-            <marker date="1393634844296" expanded="true" signature="22129:22176" placeholder="SELECT $sele..$table WHERE..." />
+            <marker date="1393635149609" expanded="true" signature="2579:2650" placeholder="INSERT INTO ..." />
+            <marker date="1393635149609" expanded="true" signature="5265:5314" placeholder="SELECT `user..." />
+            <marker date="1393635149609" expanded="true" signature="8009:8056" placeholder="SELECT $sele..$table WHERE..." />
+            <marker date="1393635149609" expanded="true" signature="10436:10503" placeholder="INSERT INTO ..." />
+            <marker date="1393635149609" expanded="true" signature="12209:12282" placeholder="SELECT * FRO..." />
+            <marker date="1393635149609" expanded="true" signature="12819:12892" placeholder="SELECT * FRO..." />
+            <marker date="1393635149609" expanded="true" signature="14322:14341" placeholder="SELECT * FRO..posts..." />
+            <marker date="1393635149609" expanded="true" signature="16617:16680" placeholder="INSERT INTO ..." />
+            <marker date="1393635149609" expanded="true" signature="17685:17796" placeholder="SELECT * FRO..." />
+            <marker date="1393635149609" expanded="true" signature="18368:18447" placeholder="SELECT * FRO..." />
+            <marker date="1393635149609" expanded="true" signature="19040:19160" placeholder="SELECT usern..comments..." />
+            <marker date="1393635149609" expanded="true" signature="24090:24137" placeholder="SELECT $sele..$table WHERE..." />
           </folding>
         </state>
       </provider>
@@ -349,17 +355,18 @@
         <state line="427" column="0" selection-start="13891" selection-end="13891" vertical-scroll-proportion="0.0" vertical-offset="6532" max-vertical-offset="7378">
           <folding>
             <element signature="e#6#137#0" expanded="true" />
-            <marker date="1393634844296" expanded="true" signature="2579:2650" placeholder="INSERT INTO ..." />
-            <marker date="1393634844296" expanded="true" signature="5265:5314" placeholder="SELECT `user..." />
-            <marker date="1393634844296" expanded="true" signature="8475:8542" placeholder="INSERT INTO ..." />
-            <marker date="1393634844296" expanded="true" signature="10248:10321" placeholder="SELECT * FRO..." />
-            <marker date="1393634844296" expanded="true" signature="10858:10931" placeholder="SELECT * FRO..." />
-            <marker date="1393634844296" expanded="true" signature="12361:12380" placeholder="SELECT * FRO..posts..." />
-            <marker date="1393634844296" expanded="true" signature="14656:14719" placeholder="INSERT INTO ..." />
-            <marker date="1393634844296" expanded="true" signature="15724:15835" placeholder="SELECT * FRO..." />
-            <marker date="1393634844296" expanded="true" signature="16407:16486" placeholder="SELECT * FRO..." />
-            <marker date="1393634844296" expanded="true" signature="17079:17199" placeholder="SELECT usern..comments..." />
-            <marker date="1393634844296" expanded="true" signature="22129:22176" placeholder="SELECT $sele..$table WHERE..." />
+            <marker date="1393635149609" expanded="true" signature="2579:2650" placeholder="INSERT INTO ..." />
+            <marker date="1393635149609" expanded="true" signature="5265:5314" placeholder="SELECT `user..." />
+            <marker date="1393635149609" expanded="true" signature="8009:8056" placeholder="SELECT $sele..$table WHERE..." />
+            <marker date="1393635149609" expanded="true" signature="10436:10503" placeholder="INSERT INTO ..." />
+            <marker date="1393635149609" expanded="true" signature="12209:12282" placeholder="SELECT * FRO..." />
+            <marker date="1393635149609" expanded="true" signature="12819:12892" placeholder="SELECT * FRO..." />
+            <marker date="1393635149609" expanded="true" signature="14322:14341" placeholder="SELECT * FRO..posts..." />
+            <marker date="1393635149609" expanded="true" signature="16617:16680" placeholder="INSERT INTO ..." />
+            <marker date="1393635149609" expanded="true" signature="17685:17796" placeholder="SELECT * FRO..." />
+            <marker date="1393635149609" expanded="true" signature="18368:18447" placeholder="SELECT * FRO..." />
+            <marker date="1393635149609" expanded="true" signature="19040:19160" placeholder="SELECT usern..comments..." />
+            <marker date="1393635149609" expanded="true" signature="24090:24137" placeholder="SELECT $sele..$table WHERE..." />
           </folding>
         </state>
       </provider>
@@ -369,17 +376,18 @@
         <state line="31" column="85" selection-start="920" selection-end="920" vertical-scroll-proportion="0.0" vertical-offset="527" max-vertical-offset="7310">
           <folding>
             <element signature="e#6#137#0" expanded="true" />
-            <marker date="1393634844296" expanded="true" signature="2579:2650" placeholder="INSERT INTO ..." />
-            <marker date="1393634844296" expanded="true" signature="5265:5314" placeholder="SELECT `user..." />
-            <marker date="1393634844296" expanded="true" signature="8475:8542" placeholder="INSERT INTO ..." />
-            <marker date="1393634844296" expanded="true" signature="10248:10321" placeholder="SELECT * FRO..." />
-            <marker date="1393634844296" expanded="true" signature="10858:10931" placeholder="SELECT * FRO..." />
-            <marker date="1393634844296" expanded="true" signature="12361:12380" placeholder="SELECT * FRO..posts..." />
-            <marker date="1393634844296" expanded="true" signature="14656:14719" placeholder="INSERT INTO ..." />
-            <marker date="1393634844296" expanded="true" signature="15724:15835" placeholder="SELECT * FRO..." />
-            <marker date="1393634844296" expanded="true" signature="16407:16486" placeholder="SELECT * FRO..." />
-            <marker date="1393634844296" expanded="true" signature="17079:17199" placeholder="SELECT usern..comments..." />
-            <marker date="1393634844296" expanded="true" signature="22129:22176" placeholder="SELECT $sele..$table WHERE..." />
+            <marker date="1393635149609" expanded="true" signature="2579:2650" placeholder="INSERT INTO ..." />
+            <marker date="1393635149609" expanded="true" signature="5265:5314" placeholder="SELECT `user..." />
+            <marker date="1393635149609" expanded="true" signature="8009:8056" placeholder="SELECT $sele..$table WHERE..." />
+            <marker date="1393635149609" expanded="true" signature="10436:10503" placeholder="INSERT INTO ..." />
+            <marker date="1393635149609" expanded="true" signature="12209:12282" placeholder="SELECT * FRO..." />
+            <marker date="1393635149609" expanded="true" signature="12819:12892" placeholder="SELECT * FRO..." />
+            <marker date="1393635149609" expanded="true" signature="14322:14341" placeholder="SELECT * FRO..posts..." />
+            <marker date="1393635149609" expanded="true" signature="16617:16680" placeholder="INSERT INTO ..." />
+            <marker date="1393635149609" expanded="true" signature="17685:17796" placeholder="SELECT * FRO..." />
+            <marker date="1393635149609" expanded="true" signature="18368:18447" placeholder="SELECT * FRO..." />
+            <marker date="1393635149609" expanded="true" signature="19040:19160" placeholder="SELECT usern..comments..." />
+            <marker date="1393635149609" expanded="true" signature="24090:24137" placeholder="SELECT $sele..$table WHERE..." />
           </folding>
         </state>
       </provider>
@@ -411,20 +419,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/utilities.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="513" column="52" selection-start="18939" selection-end="18939" vertical-scroll-proportion="0.7382953" vertical-offset="9645" max-vertical-offset="13040">
+        <state line="171" column="5" selection-start="6055" selection-end="6055" vertical-scroll-proportion="4.1056423" vertical-offset="0" max-vertical-offset="13740">
           <folding>
             <element signature="e#6#137#0" expanded="true" />
-            <marker date="1393634844296" expanded="true" signature="2579:2650" placeholder="INSERT INTO ..." />
-            <marker date="1393634844296" expanded="true" signature="5265:5314" placeholder="SELECT `user..." />
-            <marker date="1393634844296" expanded="true" signature="8475:8542" placeholder="INSERT INTO ..." />
-            <marker date="1393634844296" expanded="true" signature="10248:10321" placeholder="SELECT * FRO..." />
-            <marker date="1393634844296" expanded="true" signature="10858:10931" placeholder="SELECT * FRO..." />
-            <marker date="1393634844296" expanded="true" signature="12361:12380" placeholder="SELECT * FRO..posts..." />
-            <marker date="1393634844296" expanded="true" signature="14656:14719" placeholder="INSERT INTO ..." />
-            <marker date="1393634844296" expanded="true" signature="15724:15835" placeholder="SELECT * FRO..." />
-            <marker date="1393634844296" expanded="true" signature="16407:16486" placeholder="SELECT * FRO..." />
-            <marker date="1393634844296" expanded="true" signature="17079:17199" placeholder="SELECT usern..comments..." />
-            <marker date="1393634844296" expanded="true" signature="22129:22176" placeholder="SELECT $sele..$table WHERE..." />
+            <marker date="1393635149609" expanded="true" signature="2579:2650" placeholder="INSERT INTO ..." />
+            <marker date="1393635149609" expanded="true" signature="5265:5314" placeholder="SELECT `user..." />
+            <marker date="1393635149609" expanded="true" signature="8009:8056" placeholder="SELECT $sele..$table WHERE..." />
+            <marker date="1393635149609" expanded="true" signature="10436:10503" placeholder="INSERT INTO ..." />
+            <marker date="1393635149609" expanded="true" signature="12209:12282" placeholder="SELECT * FRO..." />
+            <marker date="1393635149609" expanded="true" signature="12819:12892" placeholder="SELECT * FRO..." />
+            <marker date="1393635149609" expanded="true" signature="14322:14341" placeholder="SELECT * FRO..posts..." />
+            <marker date="1393635149609" expanded="true" signature="16617:16680" placeholder="INSERT INTO ..." />
+            <marker date="1393635149609" expanded="true" signature="17685:17796" placeholder="SELECT * FRO..." />
+            <marker date="1393635149609" expanded="true" signature="18368:18447" placeholder="SELECT * FRO..." />
+            <marker date="1393635149609" expanded="true" signature="19040:19160" placeholder="SELECT usern..comments..." />
+            <marker date="1393635149609" expanded="true" signature="24090:24137" placeholder="SELECT $sele..$table WHERE..." />
           </folding>
         </state>
       </provider>
