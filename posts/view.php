@@ -102,17 +102,19 @@
 				</div>
 				<div class="indi_comments">
 				<?php
-					$comments = $comments->all_comments($indi_postid);
-					if(is_array($comments)):
-						foreach($comments as $comment): ?>
+					$comments_content = $comments->all_comments($indi_postid);
+					if(is_array($comments_content)):
+						foreach($comments_content as $comment): 
+							$comments_fix = new comments(); // needed no comments class to run comment methods inside loop 
+							?>
 						<ul class="comment">
-							<li><a href="../user/profile.php?user=<?php echo $comment['userid']; ?>" ><?php echo $users->username($comment['userid']); ?></a><?php //echo $comments->age($comment['commentid']); ?></li>
-							<li><p><?php echo $comment['content']; ?></p></li>
+							<li><a href="../user/profile.php?user=<?php echo $comment['`comments`.`userid`']; ?>" ><?php echo $users->username($comment['`comments`.`userid`']); ?></a><?php echo $comments_fix->age($comment['`comments`.`commentid`']); ?></li>
+							<li><p><?php echo $comment['`comments`.`content`']; ?></p></li>
 						</ul>
 				<?php 
 						endforeach;
 					else:
-						echo "<p>$comments</p>";
+						echo "<p>$comments_content</p>";
 					endif;
 				?>
 				</div>
