@@ -100,7 +100,7 @@
 					<label for="subreddit"><span class="bigger">Subreddit</span></label>
 					<input type="text" id="subreddit" name="subreddit" />
 
-					<input class="large-button" type="submit" value="Submit" />
+					<button style="margin:5px auto; display: block;" class="large-button" type="submit" >Save</button>
 				</form>
 			</div>
 		</div>

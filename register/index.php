@@ -80,7 +80,7 @@
 				<label for="verifyPassword">Verify Password</label>
 				<input type="password" id="verifyPassword" name="verifyPassword" />
 
-				<input class="large-button" type="submit" value="Create my account" />
+				<button style="margin:7px auto; display:block;" class="large-button" type="submit" >Create my account</button>
 			</form>
 		</div>
 	</div>

@@ -5,6 +5,7 @@ html, body {
 	height:100%;
 	height:auto\9; /*scroll fix for IE8 and lower*/
 	margin:0;
+	background-image: url('images/light_grey.png');
 	font-family: 'Exo 2', sans-serif;
 }
 
@@ -61,6 +62,10 @@ html, body {
 	font-weight: bold;
 	padding-left:5px;
 	float:right;
+}
+
+span.sub{
+	margin-top:-15px;
 }
 
 .top-nav {
@@ -180,18 +185,76 @@ html, body {
 	margin: 5px 20px;
 }
 
+.indi_comments {
+	background-color: #f8f8f8;
+	width:90%;
+	margin-left:2.5%;
+	border:1px solid #ccc;
+	-moz-box-shadow:    1px 1px 2px 2px #e5e5e5;
+  	-webkit-box-shadow: 1px 1px 2px 2px #e5e5e5;
+  	box-shadow:         1px 1px 2px 2px #e5e5e5;
+}
+.new_indi_comment {
+	width:100%;
+	min-height: 275px;
+}
+
+.new_indi_comment p {
+	margin-left: 20px;
+}
+
+.new_indi_comment form {
+	width:500px;
+	float:left;
+	margin:5px 20px;
+}
+
+.new_indi_comment textarea{
+	width:80%;
+	min-height: 180px;
+	resize: both;
+	margin:0;
+		background-color: white;
+	display: block;
+}
 .indi_post {
 	margin-left:20px;
+
 }
 
 .indi_post a {
 	color: blue;
 }
+
+.indi_post h3 {
+	font-weight: lighter;
+	margin-bottom:4px;
+}
+
+.indi_post p {
+	padding:8px;
+	border:1px solid #ccc;
+	margin-left:1%;
+	-moz-box-shadow:    1px 1px 2px 2px #e5e5e5;
+  	-webkit-box-shadow: 1px 1px 2px 2px #e5e5e5;
+  	box-shadow:         1px 1px 2px 2px #e5e5e5;
+	width:90%;
+	background-color: white;
+
+}
 /*SIDEBAR*/
 .sidebar {
-	width:25%;
-	height:100%;
+	width:23%;
+	min-height:75%;
+	margin:1%;
+	padding:8px;
 	float:right;
+	background-color: white;
+	border:1px solid #ccc;
+	-moz-box-shadow:    1px 1px 2px 2px #e5e5e5;
+  	-webkit-box-shadow: 1px 1px 2px 2px #e5e5e5;
+  	box-shadow:         1px 1px 2px 2px #e5e5e5;
+
 }
 
 .sidebar input[type=text] {
@@ -265,10 +328,19 @@ html, body {
 }
 .story {
 	min-height:100px;
-	margin-bottom:0;
+	width:90%;
+	padding:0 8px;
+	margin:1% 0 8px 1%;
+	border:1px solid #ccc;
+	-moz-box-shadow:    1px 1px 2px 2px #e5e5e5;
+  	-webkit-box-shadow: 1px 1px 2px 2px #e5e5e5;
+  	box-shadow:         1px 1px 2px 2px #e5e5e5;
+	background-color: white;
+
+
 }
 .rank {
-	width:8%;
+	width:5%;
 	float:left;
 }
 
@@ -286,7 +358,7 @@ html, body {
 	text-align: center
 }
 .info  {
-	width:92%;
+	width:95%;
 	float:right;
 }
 
@@ -335,13 +407,30 @@ html, body {
 .register  {
 	margin:15px auto;
 	display:block;
+	padding:8px;
+	background-color: white;
+		border:1px solid #ccc;
+	-moz-box-shadow:    1px 1px 2px 2px #e5e5e5;
+  	-webkit-box-shadow: 1px 1px 2px 2px #e5e5e5;
+  	box-shadow:         1px 1px 2px 2px #e5e5e5;
 	width:40%;
+}
+
+.register h2 {
+	margin-top: 4px; 
 }
 
 .selfpost{
 	margin:40px auto;
 	display:block;
 	width:60%;
+	padding:12px;
+	background-color: white;
+			border:1px solid #ccc;
+	-moz-box-shadow:    1px 1px 2px 2px #e5e5e5;
+  	-webkit-box-shadow: 1px 1px 2px 2px #e5e5e5;
+  	box-shadow:         1px 1px 2px 2px #e5e5e5;
+
 }
 
 .register form input[type="text"], .register form input[type="password"], form label{
@@ -369,9 +458,21 @@ form input[type="text"], form input[type="password"]{
 }
 
 .large-button {
+	margin-top:10px;
 	padding:8px 12px;
-	border-radius:6px;
+	border-radius:2px;
+	border:1px solid #ccc;
+	-moz-box-shadow:    1px 1px 2px 2px #e5e5e5;
+  	-webkit-box-shadow: 1px 1px 2px 2px #e5e5e5;
+  	box-shadow:         1px 1px 2px 2px #e5e5e5;
 	font-size: 17.5px;
+	background-color: white;
+}
+
+button[type="submit"]:hover{
+	background-color: #f8f8f8;	
+	cursor:default;
+	font-weight: bold;
 }
 
 textarea {
@@ -385,6 +486,8 @@ textarea {
 }
 }
 /*FOOTER*/
+
+
 footer img{
 	margin:10px auto;
 	display:block;
@@ -392,7 +495,7 @@ footer img{
 .footer-info {
 	width:580px;
 	height:200px;
-	margin:0 auto;
+	margin:275px auto 0 auto;
 	display:block;
 	border:1px solid #333;
 	border-radius: 5px

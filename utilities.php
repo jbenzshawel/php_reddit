@@ -466,7 +466,7 @@ class comments{
      * @return if valid arguments returns multidimensional array['int index'] = array('content' => ''. 'username' => '')
      *          else returns "Invalid arguemnts"
      */
-    public function comment_content($id, $type){
+   public function comment_content($id, $type){
         $this->userid = intval($this->db->real_escape_string($id));
         $type = $type;
 
@@ -475,7 +475,7 @@ class comments{
             $res = $this->make_query($query);
             foreach($res as $entry){
                 if($entry['userid'] == $this->userid){
-                    $values[] = array('content' =>$entry['content'], 'username' => $entry['username'], 'title' =>$entry['title'], 'commentid' => $entry['commentid'], 'postid' =>$entry['postid']);
+                    $values[] = array('content' =>$entry['content'], 'username' => $entry['username'], 'title' =>$entry['title'], 'commentid' => $entry['commentid'], 'date_commented' => $entry['date_comment'], 'postid' =>$entry['postid']);
                 }
             }
             if(!isset($values)){
@@ -498,6 +498,32 @@ class comments{
             return "Invalid arguments!";
         }
 	}
+
+    /*public function comment_content($id, $type){
+        $this->userid = intval($this->db->real_escape_string($id));
+        $type = (is_string($type)) ? $type : false;
+        $select_set = '`users`.`userid`, `users`.`username`, `comments`.`commentid`, `comments`.`content`, `comments`.`userid`,
+                      `comments`.`postid`, `comments`.`date_commented`, `comments`.`score`';
+        $column = array('`users`.`userid`', '`users`.`username`', '`comments`.`commentid`', '`comments`.`content`', '`comments`.`userid`',
+                        '`comments`.`postid`', '`comments`.`date_commented`', '`comments`.`score`');
+        $table = '`users` JOIN `comments` ON `users`.`userid` = `comments`.`userid`';
+
+        if($type == 'userid'){
+            $whereArgs = '`comments`.`userid` = ?';
+            $argTypes = array('i');
+            $argVars = array($this->userid);
+            // Return array of array with '`table_name`.`column_name`' => 'value'
+            return $this->make_prepared_query($select_set, $column, $table, $whereArgs, $argTypes, $argVars);
+        } elseif($type == 'postid'){
+            $whereArgs = '`comments`.`postid` = ?';
+            $argTypes = array('i');
+            $argVars = array($this->postid);
+            // Return array of array with '`table_name`.`column_name`' => 'value'
+            return $this->make_prepared_query($select_set, $column, $table, $whereArgs, $argTypes, $argVars);
+        } else {
+            return "Invalid arguments!";
+        }
+    }*/
 
     public function comment_author($commentid){
 		$this->commentid = $commentid;
@@ -535,7 +561,7 @@ class comments{
         $res[0] = strtotime($todays_date);
         $res[1] = strtotime($date_created[0]['date_comment']);
         // Get change in time
-        $etime = $res[0] - $res[1];
+        $etime = $res[0] - $res[1] - 7*3600; //adjusted for Central Time Zone
         // If time less than 1 second return 0 seconds
         if ($etime < 1){
             return '0 seconds';
@@ -555,7 +581,7 @@ class comments{
     }
 
     // Display all comments in a paticular post
-    public function all_comments($postid){
+    public function all_comments($postid, $sort="new"){
         $this->postid = $this->db->real_escape_string($postid);
         // Decalre prepared query parameters
         $select_set = '*';
@@ -565,7 +591,12 @@ class comments{
         $argTypes = array('s');
         $argVars = array($this->postid);
         // return results as array of arrays with "column_name" => "value"
-        return $this->make_prepared_query($select_set, $column, $table, $whereArgs,$argTypes,$argVars);
+        $all_comments = $this->make_prepared_query($select_set, $column, $table, $whereArgs,$argTypes,$argVars);
+        if(is_array($all_comments)){
+            return array_reverse($all_comments);
+        } else {
+            return $all_comments;
+        }
     }
     // OLD WAY in process of phasing out. Use make_prepared_query in the future
     private function make_query($query){
@@ -637,7 +668,11 @@ class comments{
             $stmt->close() ;
             $this->db->close() ;
             // return query results
-            return $query_result;
+            if(isset($query_result)){
+                return $query_result;
+            } else {
+                return "There doesn't seem to be anything here";
+            }
         }
     }
     // Returns inputted array by reference
@@ -678,5 +713,6 @@ class user_session {
 # Testing area
 # DELETE OR COMMENT OUT IF NOT IN DEVELOPMENT
 #
+
 
 ?>

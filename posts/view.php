@@ -10,7 +10,7 @@
 </head>
 <body>
 	<?php
-		include ('../utilities.php');
+		require_once('../utilities.php');
 		$session = new user_session();
 		if(isset($_SESSION['userid'])){
 			$user = new get_user_info($_SESSION['userid']);
@@ -21,6 +21,11 @@
 		$users = new users();
 		$comments = new comments();
 		$posts = new posts();
+
+		if($_POST){
+			$new_comment_content = $_POST['commentContent'];
+			$comment_result = $comments->new_comment($new_comment_content, $_SESSION['userid'], $indi_postid);
+		}
 	?>
 
 	<!--HEADER-->
@@ -76,7 +81,7 @@
 			</ul>
 			<ul class="profile">
 				<li><a href="#">
-					<?php if(isset($_SESSION['userid'])): ?> 
+					<?php if(isset($_SESSION['userid'])): ?>
 					<?php echo $user->username(); 
 						  endif; ?></a> (2646)</li>
 				<li>|</li>
@@ -91,23 +96,76 @@
 	<div id="wrapper">
 	<!--MAIN CONTENT-->
 		<div class="main-content">
-			<?php 
+			<?php
+				// If individual postid set show that post 
 				if(isset($indi_postid)):
 					$post = $posts->post_content($indi_postid, 'postid');
+                    $new_users = new users();
 			?>
 				<div class="indi_post">
-					<h3><a href="#"><?php echo $post[0]['title']; ?></a></h3>
-					<span class="sub"><?php echo $posts->age($indi_postid); ?> by <?php echo $post[0]['username']; ?></span>
+                    <article class="story">
+                        <div class="rank">
+                            <!--<p style="float:left; display:none;">1</p>hidden-->
+                            <ul style="float:right;">
+                                <li><img src="../images/upvote.PNG" alt="upvote" style="margin-left:1px;"/></li>
+                                <li>290</li>
+                                <li><img src="../images/downvote.PNG" alt="downvote"/></li>
+
+                            </ul>
+                        </div>
+                        <div class="info">
+                            <ul>
+                                <li class="title"><a href="#"><?php echo $post[0]['title']; ?></a>(self.all)
+                                    <ul>
+                                        <li class="post-info">(<span class="orange">300</span>|<span class="blue">10</span>) <?php echo $posts->age($post[0]['postid']) . " "; ?><a href="../user/profile.php?user=<?php echo $users->id($post[0]['username']); ?>"><?php echo $post[0]['username']; ?></a>
+                                            <ul class="story-links">
+                                                <li><a href="#">10 comments</a></li>
+                                                <li><a href="#">share</a></li>
+                                                <li><a href="#">save</a></li>
+                                                <li><a href="#">hide</a></li>
+                                                <li><a href="#">report</a></li>
+                                                <li><a href="#">[l=c]</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                            </ul>
+                        </div>
+                    </article>
 					<p><?php echo $post[0]['content']; ?></p>
 				</div>
-				<div class="indi_comments">
+                <div class="indi_comments">
+                    <div class="new_indi_comment">
+                        <p>commenting as: <?php echo $user->username(); ?></p>
+                        <form action="" method="POST">
+                            <label name="commentContent"></label>
+                            <textarea id="commentContent" name="commentContent"></textarea>
+                            <button class="large-button" type="submit">Save</button>
+                        </form>
+                    </div>
+				<!--<?php
+					// Individual post new comment section
+					/*if(isset($new_comment_content) and isset($comment_result)):
+						$new_indi_comment = new comments();
+						$new_indi_comment_content = $new_indi_comment->comment_content($_SESSION['userid'], 'userid');
+                        $new_indi_comment_id = $new_indi_comment_content[count($new_comment_content)-1]['commentid'];
+						*/?>-->
+						<!--<ul class="comment">-->
+
 				<?php
-					$comments_content = $comments->all_comments($indi_postid);
+                  //  endif;
+                    // Get all comments
+                    $comments_fix = new comments(); // needed no comments class to run comment methods inside loop
+                    $comments_content = $comments_fix->all_comments($indi_postid);
 					if(is_array($comments_content)):
-						foreach($comments_content as $comment): 
-							$comments_fix = new comments(); // needed no comments class to run comment methods inside loop 
-							?>
-						<ul class="comment">
+						foreach($comments_content as $key => $comment):
+                            $comments_fix = new comments(); // needed no comments class to run comment methods inside loop
+                            if(isset($new_indi_comment_id)){
+                                if($comment['`comments`.`commentid`'] == $new_indi_comment_id){
+                                    break;
+                                }
+                            }
+                            ?>
+                        <ul class="comment">
 							<li><a href="../user/profile.php?user=<?php echo $comment['`comments`.`userid`']; ?>" ><?php echo $users->username($comment['`comments`.`userid`']); ?></a><?php echo $comments_fix->age($comment['`comments`.`commentid`']); ?></li>
 							<li><p><?php echo $comment['`comments`.`content`']; ?></p></li>
 						</ul>
@@ -118,14 +176,16 @@
 					endif;
 				?>
 				</div>
-			<?php	else:
+			<?php
+				// Else show all posts 	
+				else:
 					foreach($posts->all_posts('all') as $post): 
 					$post_author = new get_user_info($post['userid']);
 			?>
 				<!--STORY 1-->
 				<article class="story">
 					<div class="rank">
-						<p style="float:left;">1</p> 
+                        <!--<p style="float:left; display:none;">1</p>hidden-->
 						<ul style="float:right;">
 							<li><img src="../images/upvote.PNG" alt="upvote" style="margin-left:1px;"/></li>
 							<li>290</li>
@@ -170,7 +230,6 @@
 	</div>
 	<!--FOOTER-->
 	<footer>
-		<img src="../images/balloons.PNG" alt="balloons" />
 		<div class="footer-info">
 			<div class="four-col">
 				<h4>about</h4>
@@ -203,7 +262,7 @@
 					</ul>				
 			</div>
 			<div class="four-col">
-				<h4><3</h3>
+				<h4><3</h4>
 					<ul>
 						<li><a href="#">reddit gold</a></li>
 						<li><a href="#">store</a></li>

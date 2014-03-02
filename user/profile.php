@@ -92,7 +92,9 @@
 				$user_comments = $comments->comment_content($profile, 'userid');
 				$user_posts = $posts->post_content($profile, 'userid');
 				if(is_array($user_comments)):
-					foreach($user_comments as $comment): ?>
+
+					foreach($user_comments as $comment):  ?>
+
 						<ul class="comment">
 							<li><a href="../posts/view.php?postid=<?php echo $comment['postid']; ?>"><?php echo $comment['title']; ?></a> by <?php echo $posts->author($comment['postid']); ?></li>
 							<li><a href="profile.php?user=" ><?php echo $comment['username']; ?></a><?php echo $comments->age($comment['commentid']); ?></li>
@@ -100,8 +102,10 @@
 						</ul>
 				<?php	
 					endforeach;
-				endif;  
-				if(is_array($user_posts)):
+				endif;
+            echo var_dump($user_posts);
+
+            if(is_array($user_posts)):
 					foreach($user_posts as $post): ?>
 						<ul class="comment">
 							<li><a href="../posts/view.php?postid=<?php echo $post['postid']; ?>"><?php echo $post['title']; ?></a>(subreddit)</li>
