@@ -23,8 +23,16 @@
 		$posts = new posts();
 
 		if($_POST){
-			$new_comment_content = $_POST['commentContent'];
-			$comment_result = $comments->new_comment($new_comment_content, $_SESSION['userid'], $indi_postid);
+            // counter to fix resubmiting post variables on page refresh
+            $_SESSION['post_submit_count'] = 0;
+            if($_SESSION['post_submit_count'] == 0){
+                $new_comment_content = $_POST['commentContent'];
+                $comment_result = $comments->new_comment($new_comment_content, $_SESSION['userid'], $indi_postid);
+                $_SESSION['post_submit_count']++;
+            } else {
+                unset($_POST['commentContent']);
+               // unset($_SESSION['post_submit_content']);
+            }
 		}
 	?>
 
@@ -64,12 +72,6 @@
 		</div>
 		<div class="top-nav">
 			<a href="../index.html"><img src="../images/reddit.png" alt="reddit!"/></a>
-			<h2><?php if(isset($_SESSION['userid'])){ 
-						echo $user->username(); 
-					  } else { 
-					  	echo ""; 
-				}
-				?></h2>
 			<ul>
 				<li class="active"><a href="#">hot</a></li>
 				<li><a href="#">new</a></li>
@@ -77,7 +79,6 @@
 				<li><a href="#">controversial</a></li>
 				<li><a href="#">top</a></li>
 				<li><a href="#">gilded</a></li>
-
 			</ul>
 			<ul class="profile">
 				<li><a href="#">
@@ -217,15 +218,19 @@
 		</div>
 			<!--SIDEBAR-->
 		<div class="sidebar">
-			<?php if(isset($_SESSION['userid'])): ?>
-			<h2><?php echo $user->username(); ?> 
-			<p><span class="superstrong">2,646</span> link karma</p>
-			<p><span class="superstrong">3,605</span> comment karma</p>
-			<div class="trophy">
+            <input type="text" placeholder="search reddit">
+            <div class="big-button">
+                <a href="new.php">Submit a new link</a>
+            </div>
+            <div class="big-button">
+                <a href="new.php">Submit a new text post</a>
+            </div>
 
-			</div>
-			<?php	endif; ?></h2>
-
+            <div>
+                <h4>Previously Viewed Links</h4>
+                <ul>
+                </ul>
+            </div>
 		</div>
 	</div>
 	<!--FOOTER-->
