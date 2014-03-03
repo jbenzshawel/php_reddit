@@ -23,10 +23,12 @@
 		$posts = new posts();
 
 		if($_POST){
-            // The logic below is used to keep track of page refresh preventing sending the same comment twice
-            // Multiple comments are allowed without page reload however after 3 comments an error message
-            // pops up warning the user to space out their comments and does a hard reload  unseting
-            //  rellevant post and session variables.
+            /** 
+             * The logic below is used to keep track of page refresh preventing sending the same comment twice
+             * Multiple comments are allowed without page reload however after 3 comments an error message
+             * pops up warning the user to space out their comments and does a hard reload  unseting
+             * rellevant post and session variables.
+             */
             // if you haven't made a comment or are making a second comment
             if(!isset($_SESSION['post_submit_count']) or isset($_SESSION['new_comment_content'])){
                     // if a user is making a new comment, make it for them
