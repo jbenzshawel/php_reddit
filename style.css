@@ -20,6 +20,35 @@ html, body {
  	text-decoration: none;
  }
 
+/* STYLE FOR DEV MODE OUTPUT */
+.dev-output {
+	min-width: 400px;
+	min-height: 200px;
+	position: absolute;
+	z-index: 99;
+	top: 71%;
+	left: 65%;
+	background-color: #f5f5f5;
+	border: 1px solid #ccc;
+	border-radius:4px;
+	-moz-box-shadow:    1px 1px 2px 2px #e5e5e5;
+  	-webkit-box-shadow: 1px 1px 2px 2px #e5e5e5;
+  	box-shadow:         1px 1px 2px 2px #e5e5e5;
+}
+
+.dev-output ul{
+	position: absolute;
+	z-index: 999999;
+	color: green;
+	padding: 8px;	
+	list-style-type: none;
+
+}
+
+.dev-output li {
+	list-style-type: none;
+	margin-bottom: 3px;
+}
  #wrapper {
  	height:100%;
  	width:100%;
@@ -189,6 +218,7 @@ span.sub{
 	background-color: #f8f8f8;
 	width:90%;
 	margin-left:2.5%;
+	margin-bottom: 200px;
 	border:1px solid #ccc;
 	-moz-box-shadow:    1px 1px 2px 2px #e5e5e5;
   	-webkit-box-shadow: 1px 1px 2px 2px #e5e5e5;
@@ -487,6 +517,8 @@ textarea {
 }
 /*FOOTER*/
 
+/* FOOTER */
+
 
 footer img{
 	margin:10px auto;
@@ -495,7 +527,7 @@ footer img{
 .footer-info {
 	width:580px;
 	height:200px;
-	margin:275px auto 0 auto;
+	margin:767px auto 0 auto;
 	display:block;
 	border:1px solid #333;
 	border-radius: 5px

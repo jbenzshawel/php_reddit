@@ -23,15 +23,50 @@
 		$posts = new posts();
 
 		if($_POST){
-            // counter to fix resubmiting post variables on page refresh
-            $_SESSION['post_submit_count'] = 0;
-            if($_SESSION['post_submit_count'] == 0){
-                $new_comment_content = $_POST['commentContent'];
-                $comment_result = $comments->new_comment($new_comment_content, $_SESSION['userid'], $indi_postid);
-                $_SESSION['post_submit_count']++;
-            } else {
+            // The logic below is used to keep track of page refresh preventing sending the same comment twice
+            // Multiple comments are allowed without page reload however after 3 comments an error message
+            // pops up warning the user to space out their comments and does a hard reload  unseting
+            //  rellevant post and session variables.
+            // if you haven't made a comment or are making a second comment
+            if(!isset($_SESSION['post_submit_count']) or isset($_SESSION['new_comment_content'])){
+                    // if a user is making a new comment, make it for them
+                    if(!isset($_SESSION['new_comment-content']) and !isset($_SESSION['post_submit_count'])){
+                        $_SESSION['post_submit_count'] = 0;
+                        echo '<div class="dev-output"><ul><li>$_POST variables used. Possible duplicate entries!</li>';
+                        $new_comment_content = $_POST['commentContent'];
+                        $comment_result = $comments->new_comment($new_comment_content, $_SESSION['userid'], $indi_postid);
+                        echo "<li>$comment_result</li>";
+                        $_SESSION['post_submit_count']++;
+                        $_SESSION['new_comment_content'] = $new_comment_content;
+                        echo "<li>$_SESSION[post_submit_count]</li>";
+                        echo "</ul></div>";
+                     // if the previous comment does not equal the new comment and this is your second comment
+                    } elseif($_SESSION['new_comment_content'] != $_POST['commentContent'] and $_SESSION['post_submit_count'] < 2){
+                        echo '<div class="dev-output"><ul><li>$_POST variables used. Possible duplicate entries!</li>';
+                        $new_comment_content = $_POST['commentContent'];
+                        $comment_result = $comments->new_comment($new_comment_content, $_SESSION['userid'], $indi_postid);
+                        echo "<li>$comment_result</li>";
+                        $_SESSION['post_submit_count']++;
+                        echo "<li>$_SESSION[post_submit_count]</li>";
+                        echo "</ul></div>";
+                    }
+            }
+            // If this is your second comment unset post variables before next comment
+            if($_SESSION['post_submit_count'] > 1 and $_SESSION['post_submit_count'] < 3){
+                echo '<div class="dev-output"><ul>';
                 unset($_POST['commentContent']);
-               // unset($_SESSION['post_submit_content']);
+                echo "<li>POST variables unset!</li>";
+                echo "<li>Comment submit count = $_SESSION[post_submit_count]</li></ul></div>";
+                $_SESSION['post_submit_count']++;
+            // if this is the third comment alert user to not comment as match, unset session variables and post variables, reload page
+            } elseif($_SESSION['post_submit_count'] > 2){
+                $session_post = $_SESSION['post_submit_count'];
+                unset($_SESSION['post_submit_count'], $session_post);
+                unset($_POST['commentContent']);
+                echo '<script type="text/javascript">';
+                echo 'alert("You have been commenting a lot lately. The page will to clear out some POST data");';
+                echo 'location.reload();';
+                echo '</script>';
             }
 		}
 	?>
