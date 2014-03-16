@@ -28,7 +28,7 @@
     <splitter split-orientation="horizontal" split-proportion="0.5463542">
       <split-first>
         <leaf>
-          <file leaf-file-name="view.php" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="view.php" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/posts/view.php">
               <provider selected="true" editor-type-id="text-editor">
                 <state line="93" column="26" selection-start="4330" selection-end="4330" vertical-scroll-proportion="2.120521" vertical-offset="0" max-vertical-offset="7161">
@@ -209,19 +209,19 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/style.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="121" column="23" selection-start="1937" selection-end="1937" vertical-scroll-proportion="0.35058078" vertical-offset="2935" max-vertical-offset="17010">
+                <state line="121" column="23" selection-start="1937" selection-end="1937" vertical-scroll-proportion="0.0" vertical-offset="2935" max-vertical-offset="17010">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="TODO.md" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="TODO.md" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/TODO.md">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="6" column="54" selection-start="384" selection-end="384" vertical-scroll-proportion="-4.08" vertical-offset="0" max-vertical-offset="255">
+                <state line="12" column="0" selection-start="715" selection-end="715" vertical-scroll-proportion="0.22125813" vertical-offset="0" max-vertical-offset="922">
                   <folding />
                 </state>
               </provider>
@@ -250,10 +250,10 @@
         <option value="$PROJECT_DIR$/posts/submit.php" />
         <option value="$PROJECT_DIR$/utilities.php" />
         <option value="$PROJECT_DIR$/posts.php" />
-        <option value="$PROJECT_DIR$/TODO.md" />
         <option value="$PROJECT_DIR$/posts/new.php" />
         <option value="$PROJECT_DIR$/posts/view.php" />
         <option value="$PROJECT_DIR$/style.css" />
+        <option value="$PROJECT_DIR$/TODO.md" />
       </list>
     </option>
   </component>
@@ -956,13 +956,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TODO.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="54" selection-start="384" selection-end="384" vertical-scroll-proportion="-4.08" vertical-offset="0" max-vertical-offset="255">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/posts/submit.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="113" column="34" selection-start="3337" selection-end="3337" vertical-scroll-proportion="-27.73077" vertical-offset="1539" max-vertical-offset="3420">
@@ -994,7 +987,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="121" column="23" selection-start="1937" selection-end="1937" vertical-scroll-proportion="0.35058078" vertical-offset="2935" max-vertical-offset="17010">
+        <state line="121" column="23" selection-start="1937" selection-end="1937" vertical-scroll-proportion="0.0" vertical-offset="2935" max-vertical-offset="17010">
           <folding />
         </state>
       </provider>
@@ -1030,6 +1023,13 @@
             <marker date="1395007953609" expanded="true" signature="9351:9442" placeholder="..." />
             <marker date="1395007953609" expanded="true" signature="11298:11341" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TODO.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="715" selection-end="715" vertical-scroll-proportion="0.22125813" vertical-offset="0" max-vertical-offset="922">
+          <folding />
         </state>
       </provider>
     </entry>
