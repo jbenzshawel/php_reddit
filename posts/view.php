@@ -15,9 +15,9 @@
         $comments = new comments();
         $posts = new posts();
         $posts_page_title = new posts();
-        $page_title_forIndi = (isset($indi_postid)) ? $posts_page_title->post_title($indi_postid, 'postid') : 'All posts';
+        $page_title = (isset($indi_postid)) ? $posts_page_title->post_title($indi_postid, 'postid') : 'All posts';
     ?>
-	<title>PHP Reddit - <?php echo $page_title_forIndi;?></title>
+	<title>PHP Reddit - <?php echo $page_title;?></title>
 	<!--Stylesheets-->
 	<link rel='stylesheet' href="../style.css" />
 	<!--Fonts-->
@@ -57,7 +57,7 @@
                     } else {
                         echo '<script type="text/javascript">';
                         echo 'alert("You have been commenting a lot recently! Please wait and try again. ");';
-                        //echo 'location.reload();';
+                        echo 'location.reload();';
                         echo '</script>';
                     } // End error statement
                 } // End second comment statement
