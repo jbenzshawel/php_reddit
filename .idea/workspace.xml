@@ -212,7 +212,7 @@
           <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/style.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="121" column="23" selection-start="1937" selection-end="1937" vertical-scroll-proportion="0.0" vertical-offset="2935" max-vertical-offset="17010">
+                <state line="4" column="3" selection-start="87" selection-end="87" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="17118">
                   <folding />
                 </state>
               </provider>
@@ -221,7 +221,7 @@
           <file leaf-file-name="TODO.md" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/TODO.md">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="12" column="0" selection-start="715" selection-end="715" vertical-scroll-proportion="0.22125813" vertical-offset="0" max-vertical-offset="922">
+                <state line="10" column="40" selection-start="687" selection-end="687" vertical-scroll-proportion="0.18438178" vertical-offset="0" max-vertical-offset="922">
                   <folding />
                 </state>
               </provider>
@@ -985,13 +985,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="121" column="23" selection-start="1937" selection-end="1937" vertical-scroll-proportion="0.0" vertical-offset="2935" max-vertical-offset="17010">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/posts/view.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="93" column="26" selection-start="4330" selection-end="4330" vertical-scroll-proportion="2.120521" vertical-offset="0" max-vertical-offset="7161">
@@ -1026,9 +1019,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="3" selection-start="87" selection-end="87" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="17118">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/TODO.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="715" selection-end="715" vertical-scroll-proportion="0.22125813" vertical-offset="0" max-vertical-offset="922">
+        <state line="10" column="40" selection-start="687" selection-end="687" vertical-scroll-proportion="0.18438178" vertical-offset="0" max-vertical-offset="922">
           <folding />
         </state>
       </provider>
