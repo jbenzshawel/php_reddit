@@ -1,23 +1,25 @@
-<!doctype html> 
+<!doctype html>
 <html>
 <head>
 	<meta charset="utf-8" />
-	<title>40 Days of Ruby-Assignment 1</title>
+    <?php
+    include ('../utilities.php');
+    $session = new user_session();
+    if(isset($_SESSION['userid'])){
+        $user = new get_user_info($_SESSION['userid']);
+        $comments = new comments();
+        $posts = new posts();
+    }
+    ?>
+    <meta http-equiv="refresh" content="2;url=../posts/view.php" />
+    <title>PHP Reddit</title>
 	<!--Stylesheets-->
 	<link rel='stylesheet' href="../style.css" />
 	<!--Fonts-->
 	<link href='http://fonts.googleapis.com/css?family=Exo+2:300' rel='stylesheet' type='text/css'>
 </head>
 <body>
-	<?php
-		include ('../utilities.php');
-		$session = new user_session();
-		if(isset($_SESSION['userid'])){
-			$user = new get_user_info($_SESSION['userid']);
-			$comments = new comments();
-			$posts = new posts();
-		} 
-	?>
+
 
 	<!--HEADER-->
 	<header class="main-header">
@@ -141,7 +143,7 @@
 					</ul>				
 			</div>
 			<div class="four-col">
-				<h4><3</h3>
+				<h4><3</h4>
 					<ul>
 						<li><a href="#">reddit gold</a></li>
 						<li><a href="#">store</a></li>

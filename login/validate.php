@@ -2,7 +2,9 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<title>40 Days of Ruby-Assignment 1</title>
+    <!--REDIRECT TO POSTS AFTER LOGIN-->
+    <meta http-equiv="refresh" content="1;url=../posts/view.php" />
+	<title>PHP Reddit - 1</title>
 	<!--Stylesheets-->
 	<link rel='stylesheet' href="../style.css" />
 	<!--Fonts-->

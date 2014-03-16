@@ -2,7 +2,22 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<title>40 Days of Ruby-Assignment 1</title>
+    <?php
+        require_once('../utilities.php');
+        $session = new user_session();
+        if(isset($_SESSION['userid'])){
+            $user = new get_user_info($_SESSION['userid']);
+        }
+        if(isset($_GET['postid'])){
+            $indi_postid = $_GET['postid'];
+        }
+        $users = new users();
+        $comments = new comments();
+        $posts = new posts();
+        $posts_page_title = new posts();
+        $page_title_forIndi = (isset($indi_postid)) ? $posts_page_title->post_title($indi_postid, 'postid') : 'All posts';
+    ?>
+	<title>PHP Reddit - <?php echo $page_title_forIndi;?></title>
 	<!--Stylesheets-->
 	<link rel='stylesheet' href="../style.css" />
 	<!--Fonts-->
@@ -10,69 +25,45 @@
 </head>
 <body>
 	<?php
-		require_once('../utilities.php');
-		$session = new user_session();
-		if(isset($_SESSION['userid'])){
-			$user = new get_user_info($_SESSION['userid']);
-		} 
-		if(isset($_GET['postid'])){
-			$indi_postid = $_GET['postid'];
-		}
-		$users = new users();
-		$comments = new comments();
-		$posts = new posts();
 
 		if($_POST){
             /**
              * The logic below is used to keep track of page refresh preventing sending the same comment twice
-             * Multiple comments are allowed without page reload however after 3 comments an error message
-             * pops up warning the user to space out their comments and does a hard reload  unseting
-             * rellevant post and session variables.
+             * Multiple comments are allowed without page reload however if the timestamp of two comments are
+             * the same an error alert will pop up and the page will refresh. (updated to be based on time rather than
+             * number of comments)
              */
             // if you haven't made a comment or are making a second comment
-            if(!isset($_SESSION['post_submit_count']) or isset($_SESSION['new_comment_content'])){
-                    // if a user is making a new comment, make it for them
-                    if(!isset($_SESSION['new_comment-content']) and !isset($_SESSION['post_submit_count'])){
-                        $_SESSION['post_submit_count'] = 0;
+            if(!isset($_SESSION['last_comment_timestamp'] ) or isset($_SESSION['new_comment_content'])){
+                $date = new DateTime('now');
+                // if a user is making a new comment, make it for them
+                if(!isset($_SESSION['new_comment-content']) and !isset($_SESSION['last_comment_timestamp'])){
+                    $_SESSION['last_comment_timestamp'] = $date->getTimestamp();
+                    echo '<div class="dev-output"><ul><li>$_POST variables used. Possible duplicate entries!</li>';
+                    $new_comment_content = htmlspecialchars($_POST['commentContent'], ENT_QUOTES);
+                    $comment_result = $comments->new_comment($new_comment_content, $_SESSION['userid'], $indi_postid);
+                    echo "<li>$comment_result</li>";
+                    $_SESSION['new_comment_content'] = $new_comment_content;
+                    echo "</ul></div>";
+                 // if the previous comment does not equal the new comment and this is your second comment
+                } elseif($_SESSION['new_comment_content'] != $_POST['commentContent'] and isset($_SESSION['last_comment_timestamp'])){
+                    if($date->getTimestamp() != $_SESSION['last_comment_timestamp']){
                         echo '<div class="dev-output"><ul><li>$_POST variables used. Possible duplicate entries!</li>';
-                        $new_comment_content = $_POST['commentContent'];
+                        $new_comment_content = htmlspecialchars($_POST['commentContent'], ENT_QUOTES);
                         $comment_result = $comments->new_comment($new_comment_content, $_SESSION['userid'], $indi_postid);
                         echo "<li>$comment_result</li>";
-                        $_SESSION['post_submit_count']++;
-                        $_SESSION['new_comment_content'] = $new_comment_content;
-                        echo "<li>$_SESSION[post_submit_count]</li>";
+                        $_SESSION['last_comment_timestamp'] = $date->getTimestamp();
                         echo "</ul></div>";
-                     // if the previous comment does not equal the new comment and this is your second comment
-                    } elseif($_SESSION['new_comment_content'] != $_POST['commentContent'] and $_SESSION['post_submit_count'] < 2){
-                        echo '<div class="dev-output"><ul><li>$_POST variables used. Possible duplicate entries!</li>';
-                        $new_comment_content = $_POST['commentContent'];
-                        $comment_result = $comments->new_comment($new_comment_content, $_SESSION['userid'], $indi_postid);
-                        echo "<li>$comment_result</li>";
-                        $_SESSION['post_submit_count']++;
-                        echo "<li>$_SESSION[post_submit_count]</li>";
-                        echo "</ul></div>";
-                    }
-            }
-            // If this is your second comment unset post variables before next comment
-            if($_SESSION['post_submit_count'] > 1 and $_SESSION['post_submit_count'] < 3){
-                echo '<div class="dev-output"><ul>';
-                unset($_POST['commentContent']);
-                echo "<li>POST variables unset!</li>";
-                echo "<li>Comment submit count = $_SESSION[post_submit_count]</li></ul></div>";
-                $_SESSION['post_submit_count']++;
-            // if this is the third comment alert user to not comment as match, unset session variables and post variables, reload page
-            } elseif($_SESSION['post_submit_count'] > 2){
-                $session_post = $_SESSION['post_submit_count'];
-                unset($_SESSION['post_submit_count'], $session_post);
-                unset($_POST['commentContent']);
-                echo '<script type="text/javascript">';
-                echo 'alert("You have been commenting a lot recently! Please wait 5 seconds to comment again. ");';
-                echo 'location.reload();';
-                echo '</script>';
-            }
-		}
+                    } else {
+                        echo '<script type="text/javascript">';
+                        echo 'alert("You have been commenting a lot recently! Please wait and try again. ");';
+                        //echo 'location.reload();';
+                        echo '</script>';
+                    } // End error statement
+                } // End second comment statement
+            } // End new comment statement
+        } // End check for POST variables
 	?>
-
 	<!--HEADER-->
 	<header class="main-header">
 		<div class="subreddits">
@@ -118,18 +109,24 @@
 				<li><a href="#">gilded</a></li>
 			</ul>
 			<ul class="profile">
-				<li><a href="#">
-					<?php if(isset($_SESSION['userid'])): ?>
-					<?php echo $user->username(); 
-						  endif; ?></a> (2646)</li>
+				<li>
+					<?php if(isset($_SESSION['userid'])):?>
+                    <a href="../user/profile.php?user=<?php echo $_SESSION['userid'];?>">
+                    <?php
+					    echo $user->username();
+
+                    ?></a> ()</li>
 				<li>|</li>
 				<li><a href="#"><img src="../images/message.png" alt="message" /></a></li>
 				<li>|</li>
 				<li><a href="#"><strong>preferences</strong></a></li>
-				<li><a href="logout.php">logout</a></li>
+				<li><?php
+                    endif;
+                    if(isset($_SESSION['userid'])): ?><a href="../user/logout.php">logout</a><?php else: ?>Want to join? <a href="../register">register in seconds</a><?php endif;?></li>
 			</ul>
 		</div>
 	</header><!--END HEADER-->
+
 	<!--CONTENT WRAPPER-->
 	<div id="wrapper">
 	<!--MAIN CONTENT-->
@@ -156,7 +153,7 @@
                             <ul>
                                 <li class="title"><a href="#"><?php echo $post[0]['title']; ?></a>(self.all)
                                     <ul>
-                                        <li class="post-info">(<span class="orange">300</span>|<span class="blue">10</span>) <?php echo $posts->age($post[0]['postid']) . " "; ?><a href="../user/profile.php?user=<?php echo $users->id($post[0]['username']); ?>"><?php echo $post[0]['username']; ?></a>
+                                        <li class="post-info">(<span class="orange">300</span>|<span class="blue">10</span>) <?php  echo $posts->age($post[0]['postid']) . " "; ?><a href="../user/profile.php?user=<?php echo $users->id($post[0]['username']); ?>"><?php echo $post[0]['username']; ?></a>
                                             <ul class="story-links">
                                                 <li><a href="#">10 comments</a></li>
                                                 <li><a href="#">share</a></li>
@@ -213,6 +210,7 @@
 				else:
                     echo "<!--ALL POSTS SECTION-->\n";
 					foreach($posts->all_posts('all') as $post):
+                        $all_posts = new posts();
                         // for each post get author info
                         $post_author = new get_user_info($post['userid']);
                         // echo comment
@@ -232,7 +230,7 @@
                                 <ul>
                                 <li class="title"><a href="view.php?postid=<?php echo $post['postid']; ?>"><?php echo $post['title']; ?></a>(self.all)
                                         <ul>
-                                            <li class="post-info">(<span class="orange">300</span>|<span class="blue">10</span>) <?php echo $posts->age($post['postid']) . " "; ?><a href="../user/profile.php?user=<?php echo $post['userid']; ?>"><?php echo $post_author->username(); ?></a>
+                                            <li class="post-info">(<span class="orange">300</span>|<span class="blue">10</span>) <?php echo $all_posts->age($post['postid']) . " "; ?><a href="../user/profile.php?user=<?php echo $post['userid']; ?>"><?php echo $post_author->username(); ?></a>
                                                 <ul class="story-links">
                                                     <li><a href="#">10 comments</a></li>
                                                     <li><a href="#">share</a></li>
@@ -253,13 +251,24 @@
 		<!--SIDEBAR-->
 		<div class="sidebar">
             <input type="text" placeholder="search reddit">
+            <?php if(!isset($_SESSION['userid'])): ?>
+                <!--LOGIN-->
+                <form  action="../login/validate.php" method="post" class="login">
+                    <input type="text" name="username" placeholder="username">
+                    <input type="password" name="password" placeholder="password"><br/>
+                    <input type="checkbox" name="rememberme" id="rememberme"/>Remember me
+                    <input type="submit" value="login" >
+                </form>
+            <?php else: ?>
+
             <div class="big-button">
                 <a href="new.php">Submit a new link</a>
             </div>
             <div class="big-button">
                 <a href="new.php">Submit a new text post</a>
             </div>
-
+            <?php endif;
+            ?>
             <div>
                 <h4>Previously Viewed Links</h4>
                 <ul>
@@ -312,7 +321,7 @@
 			</div>
 		</div>
         <!--SITE DISCLAIMER-->
-		<p style="text-align:center; font-size:14px; padding:5px;">This website is in no way affiliated with Reddit.com and was created for an assignment for the 40DaysOfRuby reddit group</p>
-	</footer>
+		<p style="text-align:center; font-size:14px; padding:5px;">This website is in no way affiliated with Reddit.com </p>p>
+    </footer>
 </body>
 </html>

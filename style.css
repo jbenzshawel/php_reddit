@@ -146,11 +146,20 @@ span.sub{
 
 .login {
 	float:right;
-	border: 1px solid #333;
-	padding: 8px;
+    border:1px solid #ccc;
+	padding: 4px;
 }
 .login input[type="text"] {
-	margin-left:10px;
+	margin-left:10px !important;
+    width:45% !important;
+    padding:4px;
+}
+
+.login input[type="password"] {
+    margin-left:10px;
+    width:45% !important;
+    padding:4px;
+
 }
 
 .login input[type="submit"]{
@@ -291,7 +300,7 @@ span.sub{
 	width:95%;
 	height:30px;
 	margin:10px auto;
-	font-size: 14px
+	font-size: 16px
 }
 
 .big-button {

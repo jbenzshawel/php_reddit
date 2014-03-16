@@ -2,21 +2,23 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<title>PHP Reddit</title>
+    <?php
+        include ('../utilities.php');
+        $session = new user_session();
+        $profile = $_GET['user'];
+        $user = new get_user_info(intval($profile));
+        $comments = new comments();
+        $posts = new posts();
+        $user_profile_title = (isset($profile)) ? $user->username() : "";
+    ?>
+	<title>PHP Reddit - <?php echo $user_profile_title; ?></title>
 	<!--Stylesheets-->
 	<link rel='stylesheet' href="../style.css" />
 	<!--Fonts-->
 	<link href='http://fonts.googleapis.com/css?family=Exo+2:300' rel='stylesheet' type='text/css'>
 </head>
 <body>
-	<?php
-		include ('../utilities.php');
-		$session = new user_session();
-		$profile = $_GET['user'];
-		$user = new get_user_info(intval($profile));
-		$comments = new comments();
-		$posts = new posts();
-	?>
+
 
 	<!--HEADER-->
 	<header class="main-header">
@@ -97,19 +99,19 @@
 
 						<ul class="comment">
 							<li><a href="../posts/view.php?postid=<?php echo $comment['postid']; ?>"><?php echo $comment['title']; ?></a> by <?php echo $posts->author($comment['postid']); ?></li>
-							<li><a href="profile.php?user=" ><?php echo $comment['username']; ?></a><?php echo $comments->age($comment['commentid']); ?></li>
+							<li><a href="profile.php?user=" ><?php echo $comment['username']; ?></a><?php //echo $comments->age($comment['commentid']); ?></li>
 							<li><p><?php echo $comment['content']; ?></p></li>';
 						</ul>
 				<?php	
 					endforeach;
 				endif;
-            echo var_dump($user_posts);
+
 
             if(is_array($user_posts)):
 					foreach($user_posts as $post): ?>
 						<ul class="comment">
 							<li><a href="../posts/view.php?postid=<?php echo $post['postid']; ?>"><?php echo $post['title']; ?></a>(subreddit)</li>
-							<li><a href="profile.php?user=" ><?php echo $post['username']; ?></a><?php echo $posts->age($post['postid']); ?></li>
+							<li><a href="profile.php?user=" ><?php echo $post['username']; ?></a><?php //echo $posts->age($post['postid']); ?></li>
 							<li><p><?php echo $post['content']; ?></p></li>';
 						</ul>
 				<?php
