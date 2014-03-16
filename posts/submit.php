@@ -90,8 +90,15 @@
 	<!--MAIN CONTENT-->
 		<div class="main-content">
 			<?php
-				if(isset($_POST['title']) and isset($_POST['content']) and isset($_POST['subreddit'])) {
-					echo $posts->new_post($_POST['title'], $_POST['content'], '', $_SESSION['userid']);
+				if($_POST){
+                    $title = (isset($_POST['title'])) ? $_POST['title'] : false;
+                    $content = (isset($_POST['content'])) ? $_POST['content'] : '';
+                    $url = (isset($_POST['url'])) ? $_POST['url'] : '';
+                    if(!$title){
+                        echo "You did not enter a title. Please try again.";
+                    }else{
+                        echo $posts->new_post($_POST['title'], $_POST['content'], $url, $_SESSION['userid']);
+                    }
 				}
 				?>
 		</div>

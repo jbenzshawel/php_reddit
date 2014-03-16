@@ -275,6 +275,7 @@ class posts {
             }
             // close statement and db connection
             $stmt->close() ;
+            $query_result = (isset($query_result)) ? $query_result : "Something went wrong... Error: " . $this->db->error;
             $this->db->close() ;
             // return query results
             return $query_result;

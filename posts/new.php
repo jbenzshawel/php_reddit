@@ -2,24 +2,24 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<title>40 Days of Ruby-Assignment 1</title>
+    <?php
+        include ('../utilities.php');
+        $session = new user_session();
+        if(isset($_SESSION['userid'])){
+            $user = new get_user_info($_SESSION['userid']);
+            $comments = new comments();
+        } else {
+            $user = "";
+        }
+        $link_type = (isset($_GET['type'])) ? $_GET['type'] : 'self';
+    ?>
+    <title>PHP Reddit - New <?php echo $link_type; ?> post </title>
 	<!--Stylesheets-->
 	<link rel='stylesheet' href="../style.css" />
 	<!--Fonts-->
 	<link href='http://fonts.googleapis.com/css?family=Exo+2:300' rel='stylesheet' type='text/css'>
 </head>
 <body>
-	<?php
-		include ('../utilities.php');
-		$session = new user_session();
-		if(isset($_SESSION['userid'])){
-			$user = new get_user_info($_SESSION['userid']);
-			$comments = new comments();
-		} else {
-			$user = "";
-		}
-	?>
-
 	<!--HEADER-->
 	<header class="main-header">
 		<div class="subreddits">
@@ -88,8 +88,29 @@
 	<div id="wrapper">
 	<!--MAIN CONTENT-->
 		<div class="main-content">
+            <?php
+                if($link_type == 'link'):
+            ?>
+                    <div class="selfpost">
+                        <!--NEW LINK POST FORM-->
+                        <form action="submit.php" method="POST" >
+                            <label for="title"><span class="bigger">Title</span></label>
+                            <textarea type="text" id="title" name="title"></textarea>
+
+                            <label for="link"><span class="bigger">Link</span></label>
+                            <input type="text" id="link" name="url" />
+
+                            <label for="subreddit"><span class="bigger">Subreddit</span></label>
+                            <input type="text" id="subreddit" name="subreddit" />
+
+                            <button style="margin:5px auto; display: block;" class="large-button" type="submit" >Save</button>
+                        </form>
+                    </div>
+            <?php
+                else:
+            ?>
 			<div class="selfpost">
-				<!--NEW POST FORM-->
+				<!--NEW SELF POST FORM-->
 				<form action="submit.php" method="POST" >
 					<label for="title"><span class="bigger">Title</span></label>
 					<textarea type="text" id="title" name="title"></textarea>
@@ -103,6 +124,7 @@
 					<button style="margin:5px auto; display: block;" class="large-button" type="submit" >Save</button>
 				</form>
 			</div>
+            <?php endif; ?>
 		</div>
 			<!--SIDEBAR-->
 		<div class="sidebar">
@@ -152,7 +174,7 @@
 					</ul>				
 			</div>
 			<div class="four-col">
-				<h4><3</h3>
+				<h4><3</h4>
 					<ul>
 						<li><a href="#">reddit gold</a></li>
 						<li><a href="#">store</a></li>

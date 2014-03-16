@@ -98,7 +98,7 @@
 				<li class="subreddit-nav"><a href="#">Edit >></a></li>
 			</ul>
 		</div>
-		<div class="top-nav">
+		<div class="top-nav view">
 			<a href="../index.html"><img src="../images/reddit.png" alt="reddit!"/></a>
 			<ul>
 				<li class="active"><a href="#">hot</a></li>
@@ -167,7 +167,9 @@
                             </ul>
                         </div>
                     </article>
+                    <?php if(strlen($post[0]['content']) > 0): ?>
 					<p><?php echo $post[0]['content']; ?></p>
+                    <?php endif; ?>
 				</div><!--END INDI POST INFO SECTION-->
                 <!--START INDI COMMENTS-->
                 <div class="indi_comments">
@@ -213,6 +215,8 @@
                         $all_posts = new posts();
                         // for each post get author info
                         $post_author = new get_user_info($post['userid']);
+                        $post_comments = new comments();
+                        $post_url = (strlen($post['url']) > 5) ? $post['url'] : "view.php?postid=" . $post['postid'];
                         // echo comment
                         echo '<!--POST ID ' . $post['postid'] . ' -->'."\n"; ?>
                         <article class="story">
@@ -228,11 +232,16 @@
                             <!--POST INFO-->
                             <div class="info">
                                 <ul>
-                                <li class="title"><a href="view.php?postid=<?php echo $post['postid']; ?>"><?php echo $post['title']; ?></a>(self.all)
+                                <li class="title"><a href="<?php echo $post_url; ?>" target="_blank"><?php echo $post['title']; ?></a>(self.all)
                                         <ul>
                                             <li class="post-info">(<span class="orange">300</span>|<span class="blue">10</span>) <?php echo $all_posts->age($post['postid']) . " "; ?><a href="../user/profile.php?user=<?php echo $post['userid']; ?>"><?php echo $post_author->username(); ?></a>
                                                 <ul class="story-links">
-                                                    <li><a href="#">10 comments</a></li>
+                                                    <?php
+                                                        // fetch number of comments
+                                                        $number_comments = count($post_comments->all_comments($post['postid']));
+                                                        $number_comments = ($number_comments > 0 ) ? $number_comments : 0;
+                                                    ?>
+                                                    <li><a href="<?php echo "view.php?postid=" . $post['postid']; ?>"><?php echo $number_comments; ?>&nbsp;comments</a></li>
                                                     <li><a href="#">share</a></li>
                                                     <li><a href="#">save</a></li>
                                                     <li><a href="#">hide</a></li>
@@ -262,7 +271,7 @@
             <?php else: ?>
 
             <div class="big-button">
-                <a href="new.php">Submit a new link</a>
+                <a href="new.php?type=link">Submit a new link</a>
             </div>
             <div class="big-button">
                 <a href="new.php">Submit a new text post</a>

@@ -118,6 +118,9 @@ span.sub{
 .top-nav ul {
 	margin:-34px 0 0 350px;
 }
+.top-nav.view ul {
+    margin:-34px 0 0 140px;
+}
 .top-nav li {
 	display:inline;
 	list-style-type: none;
