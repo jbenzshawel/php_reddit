@@ -23,7 +23,7 @@ class get_user_info {
 	private  $userid;
 
 	public function __construct($id){
-		$this->db = new db_connect('localhost', 'site_admin', 'hoenikkerice09', 'reddit_project');
+		$this->db = new db_connect('localhost', 'site_admin', '5QNuvacQHLS74a8E', 'reddit_project');
 		$this->today = new DateTime();
 		$this->userid = $this->db->real_escape_string($id);
 	}
@@ -40,7 +40,7 @@ class get_user_info {
 
 	public function email(){
 		$query = "SELECT email FROM users WHERE userid = '" . $this->userid . "'";
-		return $this->make_query($query);		
+		return $this->make_query($query);
 	}
 
 	public function account_age(){
@@ -60,11 +60,11 @@ class get_user_info {
 				return $row;
 			}
 			$result->close();
-		} 
+		}
 	}
 } # END CLASS
 
-// This class is used to create new users 
+// This class is used to create new users
 class users {
 	private $userid;
 	private $name;
@@ -75,7 +75,7 @@ class users {
 	private $db;
 
 	public function __construct() {
-		$this->db = new db_connect('localhost', 'site_admin', 'hoenikkerice09', 'reddit_project');
+		$this->db = new db_connect('localhost', 'site_admin', '5QNuvacQHLS74a8E', 'reddit_project');
 		$this->salt = 'd353c3ae22a25401d257643836d7231a9a95f953';
 	}
 
@@ -97,7 +97,7 @@ class users {
 		}
 	}
 
-	// The check login method compares a username and password. If success returns array with userid, 
+	// The check login method compares a username and password. If success returns array with userid,
 	// name, username, and email. If failure returns NULL
 	public function check_login($username, $password){
 		$this->username = $this->db->real_escape_string($username);
@@ -113,9 +113,9 @@ class users {
 		}
 
 	}
-	// IMPORTANT: edit_user method arguments defined as follows: 
+	// IMPORTANT: edit_user method arguments defined as follows:
 	// $userid = integer, $values = string, $name = name
-	// for values array 'key' is the column name and value is the updated value. The $key variable equals  
+	// for values array 'key' is the column name and value is the updated value. The $key variable equals
 	// the same 'key'/column name used in the values array.
 	public function edit_user($userid, $value, $name) {
 		$this->userid = intval($this->db->real_escape_string($userid));
@@ -158,7 +158,7 @@ class users {
 } # END CLASS
 
 // class for everything post related (creating, viewing, editing)
-class posts { 
+class posts {
 	private $db;
 	private $title;
 	private $content;
@@ -167,7 +167,7 @@ class posts {
 	private $postid;
 
 	public function __construct(){
-		$this->db = new db_connect('localhost', 'site_admin', 'hoenikkerice09', 'reddit_project');
+		$this->db = new db_connect('localhost', 'site_admin', '5QNuvacQHLS74a8E', 'reddit_project');
 	}
 
 	public function new_post($title, $content, $url, $userid){
@@ -187,8 +187,8 @@ class posts {
             return 'Sorry something went wrong. Please try again. <br/>Error: ' . $stmt->error ;
 		}
 	}
-	// the post_name method allows you to look up posts by userid ($idtype = userid) or 
-	// postid ($idtype = postid). 
+	// the post_name method allows you to look up posts by userid ($idtype = userid) or
+	// postid ($idtype = postid).
 	public function post_title ($id, $idtype) {
 		$id = $this->db->real_escape_string($id);
 		$idtype = $this->db->real_escape_string($idtype);
@@ -206,9 +206,9 @@ class posts {
 			return "sorry something went wrong";
 		}
 	}
-	
-	// the post_content method allows you to look up posts by userid ($idtype = userid) or 
-	// postid ($idtype = postid). 
+
+	// the post_content method allows you to look up posts by userid ($idtype = userid) or
+	// postid ($idtype = postid).
 	public function post_content($id, $idtype) {
 		$id = $this->db->real_escape_string($id);
 		$idtype = $this->db->real_escape_string($idtype);
@@ -227,8 +227,8 @@ class posts {
 		}
 	}
 
-	// the post_URL method allows you to look up posts by userid ($idtype = userid) or 
-	// postid ($idtype = postid). 
+	// the post_URL method allows you to look up posts by userid ($idtype = userid) or
+	// postid ($idtype = postid).
 	public function post_URL($id, $idtype) {
 		$id = $this->db->real_escape_string($id);
 		$idtype = $this->db->real_escape_string($idtype);
@@ -263,9 +263,9 @@ class posts {
             return "sorry there doesn't seem to be anything here.";
         }
     }
-	// IMPORTANT: edit_post method arguments defined as follows: 
-	// $postid = integer, $values = name, $name = name is the table's 
-	// column name and value is the updated value. 
+	// IMPORTANT: edit_post method arguments defined as follows:
+	// $postid = integer, $values = name, $name = name is the table's
+	// column name and value is the updated value.
 	public function edit_post($postid, $values, $name){
 		$this->postid = intval($postid);
 		$values = $values;
@@ -294,7 +294,7 @@ class posts {
 	}
 } # END CLASS
 
-// class for everything comment related 
+// class for everything comment related
 class comments{
 	private $db;
 	private $content;
@@ -303,7 +303,7 @@ class comments{
     private $commentid;
 
 	public function __construct(){
-		$this->db = new db_connect('localhost', 'site_admin', 'hoenikkerice09', 'reddit_project');	
+		$this->db = new db_connect('localhost', 'site_admin', '5QNuvacQHLS74a8E', 'reddit_project');
 	}
 
 	public function new_comment($content, $userid, $postid){

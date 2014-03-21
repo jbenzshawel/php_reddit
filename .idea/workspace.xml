@@ -26,16 +26,16 @@
       <file leaf-file-name="utilities.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/utilities.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="85" selection-start="920" selection-end="920" vertical-scroll-proportion="-3.1193852" vertical-offset="3098" max-vertical-offset="7310">
+            <state line="427" column="0" selection-start="13891" selection-end="13891" vertical-scroll-proportion="0.85933805" vertical-offset="6532" max-vertical-offset="7378">
               <folding>
-                <marker date="1392575611609" expanded="true" signature="2579:2650" placeholder="INSERT INTO ..." />
-                <marker date="1392575611609" expanded="true" signature="5895:5962" placeholder="INSERT INTO ..." />
-                <marker date="1392575611609" expanded="true" signature="8554:8573" placeholder="SELECT * FRO..posts..." />
-                <marker date="1392575611609" expanded="true" signature="8615:8652" placeholder="SELECT * FRO..posts..." />
-                <marker date="1392575611609" expanded="true" signature="10255:10318" placeholder="INSERT INTO ..." />
-                <marker date="1392575611609" expanded="true" signature="11296:11375" placeholder="SELECT * FRO..." />
-                <marker date="1392575611609" expanded="true" signature="11833:11912" placeholder="SELECT * FRO..." />
-                <marker date="1392575611609" expanded="true" signature="12484:12604" placeholder="SELECT usern..comments..." />
+                <element signature="e#6#137#0" expanded="true" />
+                <marker date="1395371258781" expanded="true" signature="2579:2650" placeholder="INSERT INTO ..." />
+                <marker date="1395371258781" expanded="true" signature="5892:5959" placeholder="INSERT INTO ..." />
+                <marker date="1395371258781" expanded="true" signature="8544:8563" placeholder="SELECT * FRO..posts..." />
+                <marker date="1395371258781" expanded="true" signature="10242:10305" placeholder="INSERT INTO ..." />
+                <marker date="1395371258781" expanded="true" signature="11283:11362" placeholder="SELECT * FRO..." />
+                <marker date="1395371258781" expanded="true" signature="11820:11899" placeholder="SELECT * FRO..." />
+                <marker date="1395371258781" expanded="true" signature="12471:12591" placeholder="SELECT usern..comments..." />
               </folding>
             </state>
           </provider>
@@ -88,6 +88,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -108,7 +109,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -210,15 +210,15 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3997773" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="FLOATING" visible="false" weight="0.26169264" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="1924" y="36" width="1392" height="237" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="FLOATING" visible="false" weight="0.26169264" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="2043" y="208" width="1392" height="237" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -240,6 +240,22 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/utilities.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="85" selection-start="920" selection-end="920" vertical-scroll-proportion="0.0" vertical-offset="527" max-vertical-offset="7310">
+          <folding>
+            <element signature="e#6#137#0" expanded="true" />
+            <marker date="1395371258781" expanded="true" signature="2579:2650" placeholder="INSERT INTO ..." />
+            <marker date="1395371258781" expanded="true" signature="5892:5959" placeholder="INSERT INTO ..." />
+            <marker date="1395371258781" expanded="true" signature="8544:8563" placeholder="SELECT * FRO..posts..." />
+            <marker date="1395371258781" expanded="true" signature="10242:10305" placeholder="INSERT INTO ..." />
+            <marker date="1395371258781" expanded="true" signature="11283:11362" placeholder="SELECT * FRO..." />
+            <marker date="1395371258781" expanded="true" signature="11820:11899" placeholder="SELECT * FRO..." />
+            <marker date="1395371258781" expanded="true" signature="12471:12591" placeholder="SELECT usern..comments..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/utilities.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="410" column="0" selection-start="13337" selection-end="13337" vertical-scroll-proportion="0.0" vertical-offset="6311" max-vertical-offset="7089" />
@@ -267,16 +283,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/utilities.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="85" selection-start="920" selection-end="920" vertical-scroll-proportion="-3.1193852" vertical-offset="3098" max-vertical-offset="7310">
+        <state line="427" column="0" selection-start="13891" selection-end="13891" vertical-scroll-proportion="0.85933805" vertical-offset="6532" max-vertical-offset="7378">
           <folding>
-            <marker date="1392575611609" expanded="true" signature="2579:2650" placeholder="INSERT INTO ..." />
-            <marker date="1392575611609" expanded="true" signature="5895:5962" placeholder="INSERT INTO ..." />
-            <marker date="1392575611609" expanded="true" signature="8554:8573" placeholder="SELECT * FRO..posts..." />
-            <marker date="1392575611609" expanded="true" signature="8615:8652" placeholder="SELECT * FRO..posts..." />
-            <marker date="1392575611609" expanded="true" signature="10255:10318" placeholder="INSERT INTO ..." />
-            <marker date="1392575611609" expanded="true" signature="11296:11375" placeholder="SELECT * FRO..." />
-            <marker date="1392575611609" expanded="true" signature="11833:11912" placeholder="SELECT * FRO..." />
-            <marker date="1392575611609" expanded="true" signature="12484:12604" placeholder="SELECT usern..comments..." />
+            <element signature="e#6#137#0" expanded="true" />
+            <marker date="1395371258781" expanded="true" signature="2579:2650" placeholder="INSERT INTO ..." />
+            <marker date="1395371258781" expanded="true" signature="5892:5959" placeholder="INSERT INTO ..." />
+            <marker date="1395371258781" expanded="true" signature="8544:8563" placeholder="SELECT * FRO..posts..." />
+            <marker date="1395371258781" expanded="true" signature="10242:10305" placeholder="INSERT INTO ..." />
+            <marker date="1395371258781" expanded="true" signature="11283:11362" placeholder="SELECT * FRO..." />
+            <marker date="1395371258781" expanded="true" signature="11820:11899" placeholder="SELECT * FRO..." />
+            <marker date="1395371258781" expanded="true" signature="12471:12591" placeholder="SELECT usern..comments..." />
           </folding>
         </state>
       </provider>
