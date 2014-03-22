@@ -49,7 +49,6 @@ class user_session {
 # Testing area
 # DELETE OR COMMENT OUT IF NOT IN DEVELOPMENT
 #
+$posts = new posts();
 
-
-
-?>
+echo $posts->edit_post('4', 'Comment on postid 4 has been edited*', '`title`');

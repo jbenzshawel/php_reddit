@@ -168,7 +168,7 @@
 					</ul>				
 			</div>
 			<div class="four-col">
-				<h4><3</h3>
+				<h4><3</h4>
 					<ul>
 						<li><a href="#">reddit gold</a></li>
 						<li><a href="#">store</a></li>

@@ -1,10 +1,21 @@
-<!doctype html> 
+<!doctype html>
+<?php
+    require_once('../utilities.php');
+    $session = new user_session();
+    $posts_page_title = new posts();
+    $page_title = (isset($indi_postid)) ? $posts_page_title->post_title($indi_postid, 'postid') : 'All posts';
+?>
 <html>
 <head>
 	<meta charset="utf-8" />
+	<title>PHP Reddit - <?php echo $page_title;?></title>
+	<!--Stylesheets-->
+	<link rel='stylesheet' href="../style.css" />
+	<!--Fonts-->
+	<link href='http://fonts.googleapis.com/css?family=Exo+2:300' rel='stylesheet' type='text/css'>
+    <!--INCLUDE JQUERY-->
+    <scripts src="../scripts/jquery-1.11.0.min.js" type="text/javascript"></scripts>
     <?php
-        require_once('../utilities.php');
-        $session = new user_session();
         if(isset($_SESSION['userid'])){
             $user = new get_user_info($_SESSION['userid']);
         }
@@ -14,14 +25,7 @@
         $users = new users();
         $comments = new comments();
         $posts = new posts();
-        $posts_page_title = new posts();
-        $page_title = (isset($indi_postid)) ? $posts_page_title->post_title($indi_postid, 'postid') : 'All posts';
     ?>
-	<title>PHP Reddit - <?php echo $page_title;?></title>
-	<!--Stylesheets-->
-	<link rel='stylesheet' href="../style.css" />
-	<!--Fonts-->
-	<link href='http://fonts.googleapis.com/css?family=Exo+2:300' rel='stylesheet' type='text/css'>
 </head>
 <body>
 	<?php
@@ -173,40 +177,54 @@
 				</div><!--END INDI POST INFO SECTION-->
                 <!--START INDI COMMENTS-->
                 <div class="indi_comments">
-                    <div class="new_indi_comment">
-                        <p>commenting as: <?php echo $user->username(); ?></p>
-                        <form action="" method="POST">
-                            <label name="commentContent"></label>
-                            <textarea id="commentContent" name="commentContent"></textarea>
-                            <button class="large-button" type="submit">Save</button>
-                        </form>
-                    </div>
-				<?php
-                    // Get all comments
-                    $comments_fix = new comments(); // needed no comments class to run comment methods inside loop
-                    $comments_content = $comments_fix->all_comments($indi_postid);
-					if(is_array($comments_content)):
-						foreach($comments_content as $key => $comment):
-                            $comments_fix = new comments(); // needed no comments class to run comment methods inside loop
-                          /*  if(isset($new_indi_comment_id)){
-                                if($comment['`comments`.`commentid`'] == $new_indi_comment_id){
-                                    break;
-                                }
-                            }*/
-                            ?>
-                            <ul class="comment">
-                                <li><a href="../user/profile.php?user=<?php echo $comment['`comments`.`userid`']; ?>" ><?php echo $users->username($comment['`comments`.`userid`']); ?></a><?php echo $comments_fix->age($comment['`comments`.`commentid`']); ?></li>
-                                <li><p><?php echo $comment['`comments`.`content`']; ?></p></li>
-                            </ul>
-				<?php
-						endforeach;
-					// If no comments tell user there isn't anything there
-                    else:
-						echo "<p>$comments_content</p>";
-					endif;
-				?>
-				</div><!--END COMMENTS SECTION-->
+                    <?phP if(isset($user)): ?>
+                        <div class="new_indi_comment">
+                            <p>commenting as: <?php echo $user->username(); ?></p>
+                            <form action="" method="POST">
+                                <label name="commentContent"></label>
+                                <textarea id="commentContent" name="commentContent"></textarea>
+                                <button class="large-button" type="submit">Save</button>
+                            </form>
+                        </div>
+                    <?php endif; ?>
+                    <?php
+                        // Get all comments
+                        $comments_fix = new comments(); // needed no comments class to run comment methods inside loop
+                        $comments_content = $comments_fix->all_comments($indi_postid);
+                        if(is_array($comments_content)):
+                            foreach($comments_content as $key => $comment):
+                                $comments_fix = new comments(); // needed no comments class to run comment methods inside loop
+                              /*  if(isset($new_indi_comment_id)){
+                                    if($comment['`comments`.`commentid`'] == $new_indi_comment_id){
+                                        break;
+                                    }
+                                }*/
+                    ?>
+                                <ul class="comment">
+                                    <li><a href="../user/profile.php?user=<?php echo $comment['`comments`.`userid`']; ?>" ><?php echo $users->username($comment['`comments`.`userid`']); ?></a><?php echo $comments_fix->age($comment['`comments`.`commentid`']); ?></li>
+                                    <li><p><?php echo $comment['`comments`.`content`']; ?></p></li>
+                                    <?php if(isset($user)): ?><li><a href="#" onclick="javascript:newComment(); return false;" id="newCommentReply">reply</a></li><?php endif; ?>
 
+                                    <!--COMMENT REPLY-->
+                                    <div id="commentReply">
+                                        <div class="new_indi_comment_reply">
+                                            <form action="" method="POST">
+                                                <label name="commentContent"></label>
+                                                <textarea id="commentContent" name="commentContentReply"></textarea>
+                                                <button class="large-button" type="submit">Save</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </ul>
+
+                    <?php
+                            endforeach;
+                        // If no comments tell user there isn't anything there
+                        else:
+                            echo "<p>$comments_content</p>";
+                        endif;
+                    ?>
+				</div><!--END COMMENTS SECTION-->
             <?php
 				// Else show all posts 	
 				else:
@@ -332,5 +350,26 @@
         <!--SITE DISCLAIMER-->
 		<p style="text-align:center; font-size:14px; padding:5px;">This website is in no way affiliated with Reddit.com </p>p>
     </footer>
+    <!--SITE SCRIPTS-->
+    <script>
+        var count = 1;
+        console.log("javscript");
+        function newComment(){
+            count +=1;
+            if(count%2==0){
+                console.log("click");
+                    var css = document.createElement("style");
+                    css.type = "text/css";
+                    css.innerHTML = "#commentReply { display: block }";
+                    document.body.appendChild(css);
+            } else {
+                console.log("click");
+
+                document.getElementById("newCommentReply").style.display = "none";
+            }
+            return false;
+        }
+    </script>
+
 </body>
 </html>

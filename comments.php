@@ -36,6 +36,24 @@ class comments{
 
     }
 
+    // IMPORTANT: edit_post method arguments defined as follows:
+    // $postid = integer, $values = name, $name = name is the table's
+    // column name and value is the updated value.
+    public function edit_comment($postid, $values, $name){
+        $this->postid = intval($postid);
+        $values = $values;
+        $name = $name;
+        $stmt = $this->db->prepare("UPDATE comments SET " . $name . " = ? WHERE postid = ?");
+        $stmt->bind_param('si', $values, $this->postid);
+        $status = $stmt->execute();
+        if( $status != false){
+            $stmt->close();
+            return 'Success - Your post has been edited!';
+        } else {
+            $stmt->close();
+            return 'Sorry something went wrong. Please try again. <br/>Error:' . $stmt->error ;
+        }
+    }
     /**
      * Method to return either ALL of a users comments or ALL comments on a post
      * @param $id = integer value of userid OR postid
@@ -65,6 +83,19 @@ class comments{
             $res = $this->make_query($query);
             foreach($res as $entry){
                 if($entry['postid'] == $this->userid){
+                    $values[] = array('content' =>$entry['content'], 'username' => $entry['username']);
+                }
+            }
+            if(!isset($values)){
+                $values = "There doesn't seem to be anything here.";
+            }
+            return $values;
+        } elseif($type == 'commentid'){
+            $query = "SELECT * FROM `users` JOIN `comments` ON `users`.`userid` = `comments`.`userid`";
+            $res = $this->make_query($query);
+
+            foreach($res as $entry){
+                if($entry['commentid'] == $this->userid){
                     $values[] = array('content' =>$entry['content'], 'username' => $entry['username']);
                 }
             }
@@ -176,6 +207,8 @@ class comments{
             return $all_comments;
         }
     }
+
+
     // OLD WAY in process of phasing out. Use make_prepared_query in the future
     private function make_query($query){
         $res = array();

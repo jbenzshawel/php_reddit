@@ -24,6 +24,9 @@ html, body {
  	text-decoration: none;
  }
 
+ #commentReply {
+ display:none;
+ }
 /* STYLE FOR DEV MODE OUTPUT */
 .dev-output {
 	min-width: 400px;
