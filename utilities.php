@@ -49,6 +49,8 @@ class user_session {
 # Testing area
 # DELETE OR COMMENT OUT IF NOT IN DEVELOPMENT
 #
-$posts = new posts();
+/*
+$comments = new comments();
+$comment_content = $comments->comment_content(157, 'commentid');
 
-echo $posts->edit_post('4', 'Comment on postid 4 has been edited*', '`title`');
+echo var_dump($comment_content);*/

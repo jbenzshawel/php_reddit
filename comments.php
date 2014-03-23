@@ -18,19 +18,18 @@ class comments{
         $this->today = new DateTime();
     }
 
-    public function new_comment($content, $userid, $postid){
+    public function new_comment($content, $userid, $postid, $parent_commentID = 0){
         $this->content = $content;
         $this->userid = $userid;
         $this->postid = $postid;
-        $query = "INSERT INTO comments (content, userid, postid) VALUES (?, ?, ?)";
+        $query = "INSERT INTO comments (content, userid, postid, parent_commentid) VALUES (?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sii', $this->content, $this->userid, $this->postid);
+        $stmt->bind_param('siii', $this->content, $this->userid, $this->postid, $parent_commentID);
         $status = $stmt->execute();
         if($status){
             $stmt->close();
             return 'Success - your comment has been created!';
         } else {
-            $stmt->close();
             return 'Sorry something went wrong. Please try again. <br/>Error: ' . $stmt->error ;
         }
 
@@ -62,10 +61,10 @@ class comments{
      * @return if valid arguments returns multidimensional array['int index'] = array('content' => ''. 'username' => '')
      *          else returns "Invalid arguemnts"
      */
-    public function comment_content($id, $type){
+    public function comment_content($id, $type, $fullArray = null){
         $this->userid = intval($this->db->real_escape_string($id));
         $type = $type;
-
+        $fullArray = (isset($fullArray)) ? $fullArray : false;
         if($type == 'userid'){
             $query = "SELECT * FROM `users` JOIN `comments` JOIN `posts` ON `users`.`userid` = `comments`.`userid` = `posts`.`userid`";
             $res = $this->make_query($query);
@@ -90,7 +89,33 @@ class comments{
                 $values = "There doesn't seem to be anything here.";
             }
             return $values;
-        } elseif($type == 'commentid'){
+        } elseif($type == 'commentid' and $fullArray == "true"){
+            $query = "SELECT * FROM `users` JOIN `comments` ON `users`.`userid` = `comments`.`userid`";
+            $res = $this->make_query($query);
+
+            foreach($res as $entry){
+                if($entry['commentid'] == $this->userid){
+                    $values = $entry;
+                }
+            }
+            if(!isset($values)){
+                $values = "There doesn't seem to be anything here.";
+            }
+            return $values;
+        } elseif($type == 'parent_commentid' and $fullArray == "true"){
+            $query = "SELECT * FROM `users` JOIN `comments` ON `users`.`userid` = `comments`.`userid`";
+            $res = $this->make_query($query);
+
+            foreach($res as $entry){
+                if($entry['parent_commentid'] == $this->userid){
+                    $values = $entry;
+                }
+            }
+            if(!isset($values)){
+                $values = "There doesn't seem to be anything here.";
+            }
+            return $values;
+        }elseif($type == 'commentid'){
             $query = "SELECT * FROM `users` JOIN `comments` ON `users`.`userid` = `comments`.`userid`";
             $res = $this->make_query($query);
 
@@ -152,6 +177,17 @@ class comments{
         }
     }
 
+
+    // has parent comment
+
+    public function has_parent_comment($commentid){
+        $query = "SELECT * FROM `comments` where `commentid` = $commentid";
+        $query_res = $this->make_query($query);
+        $result = (is_array($query_res))? true : false;
+        return $result;
+    }
+
+
     // comment age
     public function age($commentid){
         $this->commentid = intval($commentid);
@@ -193,14 +229,16 @@ class comments{
     public function all_comments($postid, $sort="new"){
         $this->postid = $this->db->real_escape_string($postid);
         // Decalre prepared query parameters
-        $select_set = '*';
+      /*  $select_set = '*';
         $table = '`posts` JOIN `comments` ON `posts`.`postid` = `comments`.`postid`';
         $column = array('`posts`.`postid`', '`posts`.`date_post`', '`posts`.`title`', '`posts`.`url`', '`posts`.`content`', '`posts`.`score`', '`posts`.`userid`', '`comments`.`commentid`', '`comments`.`content`', '`comments`.`userid`', '`comments`.`postid`' , '`comments`.`date_commented`', '`comments`.`score`');
         $whereArgs = '`posts`.`postid` = ?';
         $argTypes = array('s');
         $argVars = array($this->postid);
         // return results as array of arrays with "column_name" => "value"
-        $all_comments = $this->make_prepared_query($select_set, $column, $table, $whereArgs,$argTypes,$argVars);
+        $all_comments = $this->make_prepared_query($select_set, $column, $table, $whereArgs,$argTypes,$argVars); */
+        $query = "SELECT * FROM `posts` JOIN `comments` ON `posts`.`postid` = `comments`.`postid` WHERE  `posts`.`postid` = $this->postid";
+        $all_comments = $this->make_query($query);
         if(is_array($all_comments)){
             return array_reverse($all_comments);
         } else {
