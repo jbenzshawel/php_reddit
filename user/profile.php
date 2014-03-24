@@ -88,34 +88,28 @@
 		<div class="main-content">
 			<!--DISPLAY USER COMMENTS-->
 			<?php
-				if(isset($_SESSION['userid'])){
-					$user_comments = $comments->comment_content($_SESSION['userid'], 'userid');
-					$user_posts = $posts->post_content($profile, 'userid');
-					if(is_array($user_comments)){
-						foreach($user_comments as $comment){
-							echo '<div class="comment">';
-							echo '<h3>' . $comment['username'] . '</h3>';
-							echo '<p>' . $comment['content'] . '</p>';
-							echo '</div>';
-						}
-					} else {
-						echo $user_comments;
-					}
 
-					if(is_array($user_posts)){
-						foreach($user_posts as $post){
-							echo '<div class="comment">';
-							echo '<h3>' . $post['username'] . '</h3>';
-							echo '<p>' . $post['content'] . '</p>';
-							echo '</div>';
-						}
-					} else {
-						echo $user_comments;
+				$user_comments = $comments->comment_content($profile, 'userid');
+				$user_posts = $posts->post_content($profile, 'userid');
+				if(is_array($user_comments)){
+					foreach($user_comments as $comment){
+						echo '<ul class="comment">';
+						echo '<li><a href="">' . $comment['title'] . '</a> by author</li>'; //$posts->post_content($comment['username'], 'username')</li>';
+						echo '<li><a href="profile.php?user=" >' . $comment['username'] . '</a>' . $comments->age($comment['commentid']) . '</li>';
+						echo '<li><p>' . $comment['content'] . '</p></li>';
+						echo '</ul>';
+					}
+				} 
+				if(is_array($user_posts)){
+					foreach($user_posts as $post){
+						echo '<div class="comment">';
+						echo '<a>' . $post['title'] . '</a>';
+						echo '<p>' . $post['content'] . '</p>';
+						echo '</div>';
 					}
 				} else {
-					echo "Please login to see more info!";
+					echo "<br/>something went wrong retrieving posts..."; 	
 				}
-
 
 			?>
 		</div>

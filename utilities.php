@@ -144,7 +144,23 @@ class users {
 			return false;
 		}
 	}
+    // Lookup userid by username
+    public function id($username){
+        $this->username = $this->db->real_escape_string($username);
+        $query = "SELECT `userid` FROM `users` WHERE `username` = ? ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $this->username);
+        $status = $stmt->execute();
+        if ($status != false){
+            $stmt->bind_result($this->userid);
+            $stmt->close();
+            return $this->userid;
 
+        } else {
+            $stmt->close();
+            return 'Sorry something went wrong. Please try again. <br/>Error: ' . $stmt->error ;
+        }
+    }
 	private function make_query($query){
 		if ( $result = $this->db->query($query) ) {
 			while ($row = $result->fetch_assoc()) {
@@ -207,26 +223,47 @@ class posts {
 		}
 	}
 
+    // post author
+    public function author($title){
+        $this->title = $this->db->real_escape_string($title);
+        $query = "SELECT `username` FROM `posts` JOIN `users` ON `posts`.`userid` = `users`.`userid` WHERE `posts`.title = ". $this->title;
+        $res = $this->make_query($query);
+        return $res;
+    }
 	// the post_content method allows you to look up posts by userid ($idtype = userid) or
 	// postid ($idtype = postid).
 	public function post_content($id, $idtype) {
-		$id = $this->db->real_escape_string($id);
-		$idtype = $this->db->real_escape_string($idtype);
-		if($idtype == 'userid'){
-			$query = "SELECT content FROM posts WHERE userid = '" . $id . "'";
-		} elseif($idtype == 'postid'){
-			$query = "SELECT content FROM posts WHERE postid = '" . $id . "'";
-		} else {
-			return "Invalide parameters";
-		}
-		$res = $this->make_query($query);
-		if($res != NULL){
-			return $res[0]['content'];
-		} else {
-			return "sorry something went wrong";
-		}
-	}
+        $this->userid = intval($this->db->real_escape_string($id));
+        $type = $idtype;
 
+        if($type == 'userid'){
+            $query = "SELECT * FROM `users` JOIN `posts` ON `users`.`userid` = `posts`.`userid`";
+            $res = $this->make_query($query);
+            foreach($res as $entry){
+                if($entry['userid'] == $this->userid){
+                    $values[] = array('userid' => $entry['userid'], 'content' =>$entry['content'], 'title' => $entry['title']);
+                }
+            }
+            if(!isset($values)){
+                $values = "There doesn't seem to be anything here.";
+            }
+            return $values;
+        } elseif($type == 'postid'){
+            $query = "SELECT * FROM `users` JOIN `posts` ON `users`.`userid` = `posts`.`userid`";
+            $res = $this->make_query($query);
+            foreach($res as $entry){
+                if($entry['postid'] == $this->userid){
+                    $values[] = array('content' =>$entry['content'], 'title' => $entry['title']);
+                }
+            }
+            if(!isset($values)){
+                $values = "There doesn't seem to be anything here.";
+            }
+            return $values;
+        } else {
+            return "Invalid arguments!";
+        }
+    }
 	// the post_URL method allows you to look up posts by userid ($idtype = userid) or
 	// postid ($idtype = postid).
 	public function post_URL($id, $idtype) {
@@ -301,9 +338,11 @@ class comments{
 	private $userid;
 	private $postid;
     private $commentid;
+    private $today;
 
 	public function __construct(){
 		$this->db = new db_connect('localhost', 'site_admin', '5QNuvacQHLS74a8E', 'reddit_project');
+        $this->today = new DateTime();
 	}
 
 	public function new_comment($content, $userid, $postid){
@@ -333,23 +372,23 @@ class comments{
      *          else returns "Invalid arguemnts"
      */
     public function comment_content($id, $type){
-		$this->userid = intval($this->db->real_escape_string($id));
-		$type = $type;
+        $this->userid = intval($this->db->real_escape_string($id));
+        $type = $type;
 
-		if($type == 'userid'){
-			$query = "SELECT * FROM `users` JOIN `comments` ON `users`.`userid` = `comments`.`userid`";
+        if($type == 'userid'){
+            $query = "SELECT * FROM `users` JOIN `comments` JOIN `posts` ON `users`.`userid` = `comments`.`userid` = `posts`.`userid`";
             $res = $this->make_query($query);
             foreach($res as $entry){
-              if($entry['userid'] == $this->userid){
-                  $values[] = array('content' =>$entry['content'], 'username' => $entry['username']);
-              }
+                if($entry['userid'] == $this->userid){
+                    $values[] = array('content' =>$entry['content'], 'username' => $entry['username'], 'title' =>$entry['title'], 'commentid' => $entry['commentid']);
+                }
             }
             if(!isset($values)){
-               $values = "There doesn't seem to be anything here.";
+                $values = "There doesn't seem to be anything here.";
             }
             return $values;
-		} elseif($type == 'postid'){
-			$query = "SELECT * FROM `users` JOIN `comments` ON `users`.`userid` = `comments`.`userid`";
+        } elseif($type == 'postid'){
+            $query = "SELECT * FROM `users` JOIN `comments` ON `users`.`userid` = `comments`.`userid`";
             $res = $this->make_query($query);
             foreach($res as $entry){
                 if($entry['postid'] == $this->userid){
@@ -360,9 +399,9 @@ class comments{
                 $values = "There doesn't seem to be anything here.";
             }
             return $values;
-		} else {
-			return "Invalid arguments!";
-		}
+        } else {
+            return "Invalid arguments!";
+        }
 	}
 
     public function comment_author($commentid){
@@ -383,10 +422,24 @@ class comments{
 		}
 	}
 
+    // comment age
+    public function age($commentid){
+        $this->commentid = intval($this->db->real_escape_string($commentid));
+        $query = "SELECT date_comment FROM comments WHERE commentid = " . $this->commentid;
+	    $date_created = $this->make_query($query);
+        $todays_date = $this->today->format('Y-m-d H:i:s');//getTimestamp();
+        $res[0] = strtotime($todays_date);
+        $res[1] = strtotime($date_created[0]['date_comment']);
+        $res[2] = (string)round(($res[0]-$res[1])/60/60/24, 2) . " days";
+        return $res[2];
+
+    }
+
     private function make_query($query){
+        $res = array();
         if ( $result = $this->db->query($query) ) {
             while ($row = $result->fetch_assoc()) {
-                $res[] = $row;
+               $res[] = $row;
             }
         } else {
             return NULL;
@@ -424,6 +477,5 @@ class user_session {
 # Testing area
 # DELETE OR COMMENT OUT IF NOT IN DEVELOPMENT
 #
-
 
 ?>
