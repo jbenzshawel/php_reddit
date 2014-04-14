@@ -49,8 +49,3 @@ class user_session {
 # Testing area
 # DELETE OR COMMENT OUT IF NOT IN DEVELOPMENT
 #
-/*
-$comments = new comments();
-$comment_content = $comments->comment_content(157, 'commentid');
-
-echo var_dump($comment_content);*/

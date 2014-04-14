@@ -17,7 +17,7 @@ class posts {
 
     public function __construct(){
         $this->db = new db_connect('localhost', 'site_admin', '5QNuvacQHLS74a8E', 'reddit_project');
-        $this->today = new DateTime();
+        $this->today = new DateTime('America/Chicago');
     }
 
     public function new_post($title, $content, $url, $userid){

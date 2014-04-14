@@ -13,7 +13,7 @@ class get_user_info {
 
     public function __construct($id){
         $this->db = new db_connect('localhost', 'site_admin', '5QNuvacQHLS74a8E', 'reddit_project');
-        $this->today = new DateTime();
+        $this->today = new DateTime('America/Chicago');
         $this->userid = $this->db->real_escape_string($id);
     }
 

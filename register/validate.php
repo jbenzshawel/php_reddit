@@ -86,7 +86,7 @@
 				if($valid){
 					$res = $users->new_user($_POST['name'], $_POST['username'], $_POST['password'], $_POST['email']);
 					echo $res;
-					echo '<a href="../user">Click here to login!</a></p>';
+					echo '<a href="../posts/view.php">Click here to login!</a></p>';
 				} else {
 			?>
 			<h3>Something's not right:</h3>

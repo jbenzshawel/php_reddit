@@ -1,3 +1,9 @@
+<?php
+	include('../utilities.php'); 
+	$user = new users();
+	$session = new user_session();
+
+?>
 <!doctype html> 
 <html>
 <head>
@@ -67,13 +73,9 @@
 	<div id="wrapper">
 		<div class="main-content">
 		<?php 
-			include('../utilities.php'); 
-			// Check user login
-			$user = new users();
 			$user_login = $user->check_login($_POST["username"], $_POST["password"]);
 			if($user_login != NULL){
 				echo "Success! " . $user_login["username"] . " has logged in."; 
-				$session = new user_session();
 				$session->start_user_session($user_login['userid']);
 			} else {
 				echo "login failed";

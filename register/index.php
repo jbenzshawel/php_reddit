@@ -43,9 +43,8 @@
 				<li class="subreddit-nav"><a href="#">Edit >></a></li>
 			</ul>
 		</div>
-		<div class="top-nav">
+		<div class="top-nav view">
 			<a href="index.html"><img src="../images/reddit.png" alt="reddit!"/></a>
-			<h2>Assignment 1</h2>
 			<ul>
 				<li class="active"><a href="#">hot</a></li>
 				<li><a href="#">new</a></li>

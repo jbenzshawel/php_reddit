@@ -1,10 +1,10 @@
-<!doctype html>
 <?php
-require_once('../utilities.php');
-$session = new user_session();
-$posts_page_title = new posts();
-$page_title = (isset($indi_postid)) ? $posts_page_title->post_title($indi_postid, 'postid') : 'All posts';
+    require_once('../utilities.php');
+    $session = new user_session();
+    $posts_page_title = new posts();
+    $page_title = (isset($indi_postid)) ? $posts_page_title->post_title($indi_postid, 'postid') : 'All posts';
 ?>
+<!doctype html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -30,80 +30,80 @@ $page_title = (isset($indi_postid)) ? $posts_page_title->post_title($indi_postid
 <body>
 <?php
 
-if(isset($_POST['commentContent']) and strlen($_POST['commentContent']) > 1){
-    /**
-     * The logic below is used to keep track of page refresh preventing sending the same comment twice
-     * Multiple comments are allowed without page reload however if the timestamp of two comments are
-     * the same an error alert will pop up and the page will refresh. (updated to be based on time rather than
-     * number of comments)
-     */
-    // if you haven't made a comment or are making a second comment
-    if(!isset($_SESSION['last_comment_timestamp'] ) or isset($_SESSION['new_comment_content'])){
-        $comments = new comments();
-        $date = new DateTime('now');
-        // if a user is making a new comment, make it for them
-        if(!isset($_SESSION['new_comment-content']) and !isset($_SESSION['last_comment_timestamp'])){
-            $_SESSION['last_comment_timestamp'] = $date->getTimestamp();
-            echo '<div class="dev-output"><ul><li>$_POST variables used. Possible duplicate entries!</li>';
-            $new_comment_content = htmlspecialchars($_POST['commentContent'], ENT_QUOTES);
-            $comment_result = $comments->new_comment($new_comment_content, $_SESSION['userid'], $indi_postid);
-            echo "<li>$comment_result</li>";
-            $_SESSION['new_comment_content'] = $new_comment_content;
-            echo "</ul></div>";
-            // if the previous comment does not equal the new comment and this is your second comment
-        } elseif($_SESSION['new_comment_content'] != $_POST['commentContent'] and isset($_SESSION['last_comment_timestamp'])){
-            if($date->getTimestamp() != $_SESSION['last_comment_timestamp']){
+    if(isset($_POST['commentContent']) and strlen($_POST['commentContent']) > 1){
+        /**
+         * The logic below is used to keep track of page refresh preventing sending the same comment twice
+         * Multiple comments are allowed without page reload however if the timestamp of two comments are
+         * the same an error alert will pop up and the page will refresh. (updated to be based on time rather than
+         * number of comments)
+         */
+        // if you haven't made a comment or are making a second comment
+        if(!isset($_SESSION['last_comment_timestamp'] ) or isset($_SESSION['new_comment_content'])){
+            $comments = new comments();
+            $date = new DateTime('now');
+            // if a user is making a new comment, make it for them
+            if(!isset($_SESSION['new_comment-content']) and !isset($_SESSION['last_comment_timestamp'])){
+                $_SESSION['last_comment_timestamp'] = $date->getTimestamp();
                 echo '<div class="dev-output"><ul><li>$_POST variables used. Possible duplicate entries!</li>';
                 $new_comment_content = htmlspecialchars($_POST['commentContent'], ENT_QUOTES);
                 $comment_result = $comments->new_comment($new_comment_content, $_SESSION['userid'], $indi_postid);
                 echo "<li>$comment_result</li>";
-                $_SESSION['last_comment_timestamp'] = $date->getTimestamp();
+                $_SESSION['new_comment_content'] = $new_comment_content;
                 echo "</ul></div>";
-            } else {
-                echo '<script type="text/javascript">';
-                echo 'alert("You have been commenting a lot recently! Please wait and try again. ");';
-                echo 'location.reload();';
-                echo '</script>';
-            } // End error statement
-        } // End second comment statement
-    } // End new comment statement
-} elseif(isset($_POST['replyCommentContent']) and strlen($_POST['replyCommentContent']) > 1){
-    // if you haven't made a comment or are making a second comment
-    if(!isset($_SESSION['last_comment_timestamp'] ) or isset($_SESSION['new_comment_content'])){
-        $comments = new comments();
-        $date = new DateTime('now');
-        // if a user is making a new comment, make it for them
-        if(!isset($_SESSION['new_comment-content']) and !isset($_SESSION['last_comment_timestamp'])){
-            $_SESSION['last_comment_timestamp'] = $date->getTimestamp();
-            echo '<div class="dev-output"><ul><li>$_POST variables used. Possible duplicate entries!</li>';
-            $parent_comment = $comments->comment_content($_POST['parent_commentID'], "commentid", "false");
-            $parent_username = $parent_comment[0]["username"];
-            $new_reply_comment_content = "><em class='reply'>" . $parent_username . "</em><br/>\n";
-            $new_reply_comment_content .= htmlspecialchars($_POST['replyCommentContent'], ENT_QUOTES);
-            $comment_result = $comments->new_comment($new_reply_comment_content, $_SESSION['userid'], $indi_postid);
-            echo "<li>$comment_result</li>";
-            $_SESSION['new_comment_content'] = $new_reply_comment_content;
-            echo "</ul></div>";
-            // if the previous comment does not equal the new comment and this is your second comment
-        } elseif($_SESSION['new_comment_content'] != $_POST['replyCommentContent'] and isset($_SESSION['last_comment_timestamp'])){
-            if($date->getTimestamp() != $_SESSION['last_comment_timestamp']){
-                echo '<div class="dev-output"><ul><li>$_POST variables used. Possible duplicate entries!</li>';
+                // if the previous comment does not equal the new comment and this is your second comment
+            } elseif($_SESSION['new_comment_content'] != $_POST['commentContent'] and isset($_SESSION['last_comment_timestamp'])){
+                if($date->getTimestamp() != $_SESSION['last_comment_timestamp']){
+                    echo '<div class="dev-output"><ul><li>$_POST variables used. Possible duplicate entries!</li>';
+                    $new_comment_content = htmlspecialchars($_POST['commentContent'], ENT_QUOTES);
+                    $comment_result = $comments->new_comment($new_comment_content, $_SESSION['userid'], $indi_postid);
+                    echo "<li>$comment_result</li>";
+                    $_SESSION['last_comment_timestamp'] = $date->getTimestamp();
+                    echo "</ul></div>";
+                } else {
+                    echo '<script type="text/javascript">';
+                    echo 'alert("You have been commenting a lot recently! Please wait and try again. ");';
+                    echo 'location.reload();';
+                    echo '</script>';
+                } // End error statement
+            } // End second comment statement
+        } // End new comment statement
+    } elseif(isset($_POST['replyCommentContent']) and strlen($_POST['replyCommentContent']) > 1){
+        // if you haven't made a comment or are making a second comment
+        if(!isset($_SESSION['last_comment_timestamp'] ) or isset($_SESSION['new_comment_content'])){
+            $comments = new comments();
+            $date = new DateTime('now');
+            // if a user is making a new comment, make it for them
+            if(!isset($_SESSION['new_comment-content']) and !isset($_SESSION['last_comment_timestamp'])){
+                $_SESSION['last_comment_timestamp'] = $date->getTimestamp();
+               echo '<div class="dev-output"><ul><li>$_POST variables used. Possible duplicate entries!</li>';
                 $parent_comment = $comments->comment_content($_POST['parent_commentID'], "commentid", "false");
                 $parent_username = $parent_comment[0]["username"];
                 $new_reply_comment_content = "><em class='reply'>" . $parent_username . "</em><br/>\n";
                 $new_reply_comment_content .= htmlspecialchars($_POST['replyCommentContent'], ENT_QUOTES);
                 $comment_result = $comments->new_comment($new_reply_comment_content, $_SESSION['userid'], $indi_postid);
-                echo "<li>$comment_result</li>";
-                $_SESSION['last_comment_timestamp'] = $date->getTimestamp();
-                echo "</ul></div>";
-            } else {
-                echo '<script type="text/javascript">';
-                echo 'alert("You have been commenting a lot recently! Please wait and try again. ");';
-                echo 'location.reload();';
-                echo '</script>';
-            } // End error statement
-        } // End second comment statement
-    } // End new comment statement
+               echo "<li>$comment_result</li>";
+                $_SESSION['new_comment_content'] = $new_reply_comment_content;
+               echo "</ul></div>";
+                // if the previous comment does not equal the new comment and this is your second comment
+            } elseif($_SESSION['new_comment_content'] != $_POST['replyCommentContent'] and isset($_SESSION['last_comment_timestamp'])){
+                if($date->getTimestamp() != $_SESSION['last_comment_timestamp']){
+                  echo '<div class="dev-output"><ul><li>$_POST variables used. Possible duplicate entries!</li>';
+                    $parent_comment = $comments->comment_content($_POST['parent_commentID'], "commentid", "false");
+                    $parent_username = $parent_comment[0]["username"];
+                    $new_reply_comment_content = "><em class='reply'>" . $parent_username . "</em><br/>\n";
+                    $new_reply_comment_content .= htmlspecialchars($_POST['replyCommentContent'], ENT_QUOTES);
+                    $comment_result = $comments->new_comment($new_reply_comment_content, $_SESSION['userid'], $indi_postid);
+                   echo "<li>$comment_result</li>";
+                    $_SESSION['last_comment_timestamp'] = $date->getTimestamp();
+                    echo "</ul></div>";
+                } else {
+                    echo '<script type="text/javascript">';
+                    echo 'alert("You have been commenting a lot recently! Please wait and try again. ");';
+                    echo 'location.reload();';
+                    echo '</script>';
+                } // End error statement
+            } // End second comment statement
+        } // End new comment statement
 
 }// End check for POST variables
 ?>
@@ -186,9 +186,9 @@ if(isset($_POST['commentContent']) and strlen($_POST['commentContent']) > 1){
                     <div class="rank">
                         <!--<p style="float:left; display:none;">1</p>hidden-->
                         <ul style="float:right;">
-                            <li><img src="../images/upvote.PNG" alt="upvote" style="margin-left:1px;"/></li>
+                            <li><a href="#" id="upvote"><img src="../images/upvote.PNG" alt="upvote" style="margin-left:1px;"/></a></li>
                             <li>290</li>
-                            <li><img src="../images/downvote.PNG" alt="downvote"/></li>
+                            <li><a href="#" id="downvote"><img src="../images/downvote.PNG" alt="upvote" style="margin-left:1px;"/></a></li>
 
                         </ul>
                     </div>
@@ -201,9 +201,8 @@ if(isset($_POST['commentContent']) and strlen($_POST['commentContent']) > 1){
                                             <?php
                                                 $post_comments = new comments();
                                                 // fetch number of comments
-                                                $number_comments = count($post_comments->all_comments($post[0]['postid']));
+                                                $number_comments = count($post_comments->all_comments($post['postid']));
                                                 $number_comments = ($number_comments > 0 ) ? $number_comments : 0;
-
                                             ?>
                                             <li><a href="#"><?php echo $number_comments; ?>&nbsp;comments</a></li>
                                             <li><a href="#">share</a></li>
@@ -242,17 +241,30 @@ if(isset($_POST['commentContent']) and strlen($_POST['commentContent']) > 1){
                     foreach($comments_content as $key => $comment):
                         $comments_fix = new comments(); // needed no comments class to run comment methods inside loop
                         ?>
-                        <ul class="comment">
-                            <li><a href="../user/profile.php?user=<?php echo $comment['userid']; ?>" ><?php echo $users->username($comment['userid']); ?></a><?php echo $comments_fix->age($comment['commentid']); ?></li>
-                            <li><p><?php echo $comment['content']; ?></p></li>
-                            <?php if(isset($user)):
-                                  $reply_counter += 1;
-                            ?>
-                            <li>
-                                <a href="#" onclick="javascript:newComment<?php echo $reply_counter; ?>(); return false;" id="newCommentReply<?php echo $reply_counter; ?>">reply</a>
+                        <div class="comment-container">
+                            <div class="comment-rank rank">
+                                <ul>
+                                    <li><a href="#" id="upvote"><img src="../images/upvote.PNG" alt="upvote" style="margin-left:1px;"/></a></li>
+                                    <li>-</li>
+                                    <li><a href="#" id="downvote"><img src="../images/downvote.PNG" alt="upvote" style="margin-left:1px;"/></a></li>
+                                </ul>
+                            </div> 
+                            <ul class="comment">
+                                <li><a href="../user/profile.php?user=<?php echo $comment['userid']; ?>" ><?php echo $users->username($comment['userid']); ?></a><?php echo $comments_fix->age($comment['commentid']); ?></li>
+                                <li><p><?php echo $comment['content']; ?></p></li>
+                                <?php if(!isset($user)): ?>
+                            </ul>
+                        </div>
+                                <?php   else:
+                                        $reply_counter += 1;
 
-                            </li>
-                        </ul>
+                                ?>
+                                <li>
+                                    <a href="#" onclick="javascript:newComment<?php echo $reply_counter; ?>(); return false;" id="newCommentReply<?php echo $reply_counter; ?>">reply</a>
+
+                                </li>
+                            </ul>
+                        </div>
                         <!--COMMENT REPLY-->
                         <div id="commentReply<?php echo $reply_counter;?>">
                             <div class="new_indi_comment_reply">
@@ -291,9 +303,9 @@ if(isset($_POST['commentContent']) and strlen($_POST['commentContent']) > 1){
                     <div class="rank">
                         <!--<p style="float:left; display:none;">1</p>hidden-->
                         <ul style="float:right;">
-                            <li><img src="../images/upvote.PNG" alt="upvote" style="margin-left:1px;"/></li>
+                            <li><a href="#" id="upvote"><img src="../images/upvote.PNG" alt="upvote" style="margin-left:1px;"/></a></li>
                             <li>290</li>
-                            <li><img src="../images/downvote.PNG" alt="downvote"/></li>
+                            <li><a href="#" id="downvote"><img src="../images/downvote.PNG" alt="upvote" style="margin-left:1px;"/></a></li>
 
                         </ul>
                     </div>
@@ -435,6 +447,15 @@ if(isset($indi_postid)):
         </script>
     <?php endfor;
 endif; ?>
+    <!--GOOLGE ANALYTICS-->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+      ga('create', 'UA-43365901-2', 'addison.im');
+      ga('send', 'pageview');
+    </script>
 </body>
 </html>
